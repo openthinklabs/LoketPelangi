@@ -1,0 +1,583 @@
+Cgroup:
+  connection: doctrine
+  tableName: cgroup
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    name:
+      type: string(120)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    description:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    CustomerGroup:
+      local: id
+      foreign: group_id
+      type: many
+CustomerGroup:
+  connection: doctrine
+  tableName: customer_group
+  columns:
+    ckode_customer:
+      type: string(11)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    group_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+  relations:
+    TblCustomer:
+      local: ckode_customer
+      foreign: ckode_customer
+      type: one
+    Cgroup:
+      local: group_id
+      foreign: id
+      type: one
+EdupediaLocation:
+  connection: doctrine
+  tableName: edupedia_location
+  columns:
+    id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    name:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    root_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    lft:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    rgt:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    level:
+      type: integer(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    TblCustomer:
+      local: id
+      foreign: lokasi_id
+      type: many
+TblBidangusaha:
+  connection: doctrine
+  tableName: tbl_bidangusaha
+  columns:
+    ckode_usaha:
+      type: string(6)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    cketerangan:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    cdetail:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: F
+      notnull: true
+      autoincrement: false
+    ctransfer:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: N
+      notnull: true
+      autoincrement: false
+  relations:
+    TblCustomer:
+      local: ckode_usaha
+      foreign: ckode_usaha
+      type: many
+TblCustomer:
+  connection: doctrine
+  tableName: tbl_customer
+  columns:
+    ckode_customer:
+      type: string(11)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    ckode_sales:
+      type: string(9)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    ckode_loket:
+      type: string(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    ckode_usaha:
+      type: string(6)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    ckode_pos:
+      type: string(5)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    lokasi_id:
+      type: integer(8)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    cnama:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cnama_singkat:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    calamat:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    calamat_tagih:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    dtgl_masuk:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cattn:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    ctelepon:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cnpwp:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    nterm:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cstatus:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: A
+      notnull: true
+      autoincrement: false
+    takakura_pinjaman:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    takakura_uang_jaminan:
+      type: 'decimal(10, 2)'
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    tong_sampah_pinjaman:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    tong_sampah_uang_jaminan:
+      type: 'decimal(10, 2)'
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    ctelepon2:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    ctransfer:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: N
+      notnull: true
+      autoincrement: false
+    ccetak_harga:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: F
+      notnull: true
+      autoincrement: false
+    cpayment:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: K
+      notnull: true
+      autoincrement: false
+  relations:
+    TblSales:
+      local: ckode_sales
+      foreign: ckode_sales
+      type: one
+    EdupediaLocation:
+      local: lokasi_id
+      foreign: id
+      type: one
+    TblLoket:
+      local: ckode_loket
+      foreign: ckode_loket
+      type: one
+    TblWilayah:
+      local: ckode_pos
+      foreign: ckodepos
+      type: one
+    TblBidangusaha:
+      local: ckode_usaha
+      foreign: ckode_usaha
+      type: one
+    TblJenisbayar:
+      local: cpayment
+      foreign: ckode_jenisbayar
+      type: one
+    TblStatuscust:
+      local: cstatus
+      foreign: ckode_statuscust
+      type: one
+    CustomerGroup:
+      local: ckode_customer
+      foreign: ckode_customer
+      type: many
+TblJenisbayar:
+  connection: doctrine
+  tableName: tbl_jenisbayar
+  columns:
+    ckode_jenisbayar:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    cketerangan:
+      type: string(20)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    TblCustomer:
+      local: ckode_jenisbayar
+      foreign: cpayment
+      type: many
+TblLoket:
+  connection: doctrine
+  tableName: tbl_loket
+  columns:
+    ckode_loket:
+      type: string(3)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    cketerangan:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    delivery_address:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    phone:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    phone2:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    fax:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    email:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    contact:
+      type: string(10)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    inactive:
+      type: integer(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    TblCustomer:
+      local: ckode_loket
+      foreign: ckode_loket
+      type: many
+    TblSales:
+      local: ckode_loket
+      foreign: ckode_loket
+      type: many
+TblSales:
+  connection: doctrine
+  tableName: tbl_sales
+  columns:
+    ckode_sales:
+      type: string(9)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    ckode_loket:
+      type: string(3)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    cnama:
+      type: string(30)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    ctransfer:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: N
+      notnull: true
+      autoincrement: false
+    calamat:
+      type: string(100)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cstatus:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: A
+      notnull: true
+      autoincrement: false
+  relations:
+    TblLoket:
+      local: ckode_loket
+      foreign: ckode_loket
+      type: one
+    TblCustomer:
+      local: ckode_sales
+      foreign: ckode_sales
+      type: many
+TblStatuscust:
+  connection: doctrine
+  tableName: tbl_statuscust
+  columns:
+    ckode_statuscust:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    cketerangan:
+      type: string(10)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    TblCustomer:
+      local: ckode_statuscust
+      foreign: cstatus
+      type: many
+TblWilayah:
+  connection: doctrine
+  tableName: tbl_wilayah
+  columns:
+    ckodepos:
+      type: string(5)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: false
+    cketerangan:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    latitude:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    longitude:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    ctransfer:
+      type: string(1)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: N
+      notnull: true
+      autoincrement: false
+  relations:
+    TblCustomer:
+      local: ckodepos
+      foreign: ckode_pos
+      type: many
