@@ -1,9 +1,9 @@
 # Symfony directories
-vendor/*
-logs/*
-cache/*
-web/uploads/*
+symfony14/vendor/*
+symfony14/logs/*
+symfony14/cache/*
+symfony14/web/uploads/*
 
-# Configuration files
-app/config/parameters.ini
-app/config/parameters.yml
+## Configuration files
+symfony14/app/config/parameters.ini
+symfony14/app/config/parameters.yml
