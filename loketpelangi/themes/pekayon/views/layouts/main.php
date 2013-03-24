@@ -32,9 +32,9 @@
 			'class' => 'bootstrap.widgets.TbMenu',
 			'items' => array(
 				array('label' => 'Home', 'url' => array('/site/index')),
-				array('label' => 'Pelanggan', 'url' => array('/pelanggan', 'view' => 'pelanggan')),
-				array('label' => 'About', 'url' => array('/site/page', 'view' => 'about')),
-				array('label' => 'Contact', 'url' => array('/site/contact')),
+				array('label' => 'Dashboard', 'url' => array('/dashboard', 'view' => 'dashboard'),'visible' => !Yii::app()->user->isGuest),
+				array('label' => 'Tentang', 'url' => array('/site/page', 'view' => 'about')),
+				array('label' => 'Hubungi Kami', 'url' => array('/site/contact')),
 				array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
 				array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest)
 			),
@@ -45,16 +45,7 @@
 			'class' => 'bootstrap.widgets.TbMenu',
 			'htmlOptions' => array('class' => 'pull-right'),
 			'items' => array(
-				array('label' => 'Link', 'url' => '#'),
-				'---',
-				array('label' => 'Dropdown', 'url' => '#', 'items' => array(
-					array('label' => 'Action', 'url' => '#'),
-					array('label' => 'Another action', 'url' => '#'),
-					array('label' => 'Something else here', 'url' => '#'),
-					'---',
-					array('label' => 'Separated link', 'url' => '#'),
-				)),
-			),
+			 ),
 		),
 	),
 )); ?>

@@ -305,3 +305,79 @@ Stack trace:
 REQUEST_URI=/index.php?r=gii/bootstrap/code&id=0
 HTTP_REFERER=http://loketpelangi.np/index.php?r=gii/bootstrap
 ---
+2013/03/24 19:02:09 [error] [exception.CException] exception 'CException' with message 'Property "CActiveForm.class" is not defined.' in /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CWidgetFactory.php(161): CComponent->__set('class', 'form-horizontal')
+#1 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'CActiveForm', Array)
+#2 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CBaseController.php(189): CBaseController->createWidget('CActiveForm', Array)
+#3 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/loketpelangi/protected/views/site/login.php(27): CBaseController->beginWidget('CActiveForm', Array)
+#4 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CBaseController.php(126): require('/home/wildan/jo...')
+#5 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/wildan/jo...', Array, true)
+#6 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(869): CBaseController->renderFile('/home/wildan/jo...', Array, true)
+#7 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(782): CController->renderPartial('login', Array, true)
+#8 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/loketpelangi/protected/controllers/SiteController.php(98): CController->render('login', Array)
+#9 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#10 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CWebApplication.php(282): CController->run('login')
+#14 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#16 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/loketpelangi/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=site/login
+HTTP_REFERER=http://loketpelangi.np/index.php?r=site/login
+---
+2013/03/24 19:08:09 [error] [exception.CException] exception 'CException' with message 'CActiveForm and its behaviors do not have a method or closure named "textFieldRow".' in /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/base/CComponent.php:265
+Stack trace:
+#0 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/loketpelangi/protected/views/site/login.php(32): CComponent->__call('textFieldRow', Array)
+#1 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/loketpelangi/protected/views/site/login.php(32): CActiveForm->textFieldRow(Object(LoginForm), 'username', Array)
+#2 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CBaseController.php(126): require('/home/wildan/jo...')
+#3 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/wildan/jo...', Array, true)
+#4 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(869): CBaseController->renderFile('/home/wildan/jo...', Array, true)
+#5 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(782): CController->renderPartial('login', Array, true)
+#6 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/loketpelangi/protected/controllers/SiteController.php(98): CController->render('login', Array)
+#7 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#8 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CWebApplication.php(282): CController->run('login')
+#12 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#14 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/loketpelangi/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php?r=site/login
+HTTP_REFERER=http://loketpelangi.np/index.php?r=site/login
+---
+2013/03/24 19:22:31 [error] [exception.CException] exception 'CException' with message 'Property "TbBox.0" is not defined.' in /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CWidgetFactory.php(161): CComponent->__set('0', NULL)
+#1 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(DashboardController), 'bootstrap.widge...', Array)
+#2 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/loketpelangi/protected/views/dashboard/index.php(13): CBaseController->widget('bootstrap.widge...', Array)
+#4 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CBaseController.php(126): require('/home/wildan/jo...')
+#5 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/wildan/jo...', NULL, true)
+#6 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(869): CBaseController->renderFile('/home/wildan/jo...', NULL, true)
+#7 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(782): CController->renderPartial('index', NULL, true)
+#8 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/loketpelangi/protected/controllers/DashboardController.php(7): CController->render('index')
+#9 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/actions/CInlineAction.php(49): DashboardController->actionIndex()
+#10 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CWebApplication.php(282): CController->run('index')
+#14 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CWebApplication.php(141): CWebApplication->runController('Dashboard/index')
+#15 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#16 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/loketpelangi/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=Dashboard/index
+HTTP_REFERER=http://loketpelangi.np/index.php?r=site/login
+---
+2013/03/24 20:15:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "produk/index".' in /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/web/CWebApplication.php(141): CWebApplication->runController('produk/index')
+#1 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/wildan/jobstuff/NegeriPelangi/webapps/POSLoketPelangi/loketpelangi/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=produk/index
+HTTP_REFERER=http://loketpelangi.np/index.php?r=dashboard&view=dashboard
+---

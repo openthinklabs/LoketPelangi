@@ -1,8 +1,10 @@
 <?php
-$this->breadcrumbs=array(
-	'Pelanggans'=>array('index'),
-	'Manage',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+		'links'=>
+		array('Dashboard'=>Yii::app()->createUrl('dashboard/index'),
+				'Pelanggan'=>array('index'),
+				'Manage'),
+));
 
 $this->menu=array(
 	array('label'=>'List Pelanggan','url'=>array('index')),
@@ -23,7 +25,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Pelanggans</h1>
+<h1>Manage Pelanggan</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
