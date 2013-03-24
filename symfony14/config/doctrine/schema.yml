@@ -1,6 +1,6 @@
-Cgroup:
+Kelompok:
   connection: doctrine
-  tableName: cgroup
+  tableName: kelompok
   columns:
     id:
       type: integer(4)
@@ -8,14 +8,14 @@ Cgroup:
       unsigned: false
       primary: true
       autoincrement: true
-    name:
+    nama:
       type: string(120)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    description:
+    keterangan:
       type: string(255)
       fixed: false
       unsigned: false
@@ -23,38 +23,38 @@ Cgroup:
       notnull: true
       autoincrement: false
   relations:
-    CustomerGroup:
+    KelompokPelanggan:
       local: id
-      foreign: group_id
+      foreign: kelompok_id
       type: many
-CustomerGroup:
+KelompokPelanggan:
   connection: doctrine
-  tableName: customer_group
+  tableName: kelompok_pelanggan
   columns:
-    ckode_customer:
+    kode_pelanggan:
       type: string(11)
       fixed: false
       unsigned: false
       primary: true
       autoincrement: false
-    group_id:
+    kelompok_id:
       type: integer(4)
       fixed: false
       unsigned: false
       primary: true
       autoincrement: false
   relations:
-    TblCustomer:
-      local: ckode_customer
-      foreign: ckode_customer
+    Pelanggan:
+      local: kode_pelanggan
+      foreign: kode_pelanggan
       type: one
-    Cgroup:
-      local: group_id
+    Kelompok:
+      local: kelompok_id
       foreign: id
       type: one
-EdupediaLocation:
+Lokasi:
   connection: doctrine
-  tableName: edupedia_location
+  tableName: lokasi
   columns:
     id:
       type: integer(8)
@@ -62,7 +62,7 @@ EdupediaLocation:
       unsigned: false
       primary: true
       autoincrement: true
-    name:
+    nama:
       type: string(255)
       fixed: false
       unsigned: false
@@ -112,28 +112,28 @@ EdupediaLocation:
       notnull: true
       autoincrement: false
   relations:
-    TblCustomer:
+    Pelanggan:
       local: id
       foreign: lokasi_id
       type: many
-TblBidangusaha:
+BidangUsaha:
   connection: doctrine
-  tableName: tbl_bidangusaha
+  tableName: bidang_usaha
   columns:
-    ckode_usaha:
+    kode_usaha:
       type: string(6)
       fixed: false
       unsigned: false
       primary: true
       autoincrement: false
-    cketerangan:
+    keterangan:
       type: string(50)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    cdetail:
+    detail:
       type: string(1)
       fixed: false
       unsigned: false
@@ -141,7 +141,7 @@ TblBidangusaha:
       default: F
       notnull: true
       autoincrement: false
-    ctransfer:
+    transfer:
       type: string(1)
       fixed: false
       unsigned: false
@@ -150,42 +150,42 @@ TblBidangusaha:
       notnull: true
       autoincrement: false
   relations:
-    TblCustomer:
-      local: ckode_usaha
-      foreign: ckode_usaha
+    Pelanggan:
+      local: kode_usaha
+      foreign: kode_usaha
       type: many
-TblCustomer:
+Pelanggan:
   connection: doctrine
-  tableName: tbl_customer
+  tableName: pelanggan
   columns:
-    ckode_customer:
+    kode_pelanggan:
       type: string(11)
       fixed: false
       unsigned: false
       primary: true
       autoincrement: false
-    ckode_sales:
+    kode_salesman:
       type: string(9)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    ckode_loket:
+    kode_loket:
       type: string(3)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    ckode_usaha:
+    kode_usaha:
       type: string(6)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    ckode_pos:
+    kode_pos:
       type: string(5)
       fixed: false
       unsigned: false
@@ -199,28 +199,28 @@ TblCustomer:
       primary: false
       notnull: true
       autoincrement: false
-    cnama:
+    nama:
       type: string(100)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    cnama_singkat:
+    nama_singkat:
       type: string(50)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    calamat:
+    alamat:
       type: string(100)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    calamat_tagih:
+    alamat_tagih:
       type: string(100)
       fixed: false
       unsigned: false
@@ -234,35 +234,35 @@ TblCustomer:
       primary: false
       notnull: false
       autoincrement: false
-    cattn:
+    attn:
       type: string(20)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    ctelepon:
+    telepon:
       type: string(20)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    cnpwp:
+    npwp:
       type: string(20)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    nterm:
+    term:
       type: integer(4)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    cstatus:
+    status:
       type: string(1)
       fixed: false
       unsigned: false
@@ -298,14 +298,14 @@ TblCustomer:
       primary: false
       notnull: false
       autoincrement: false
-    ctelepon2:
+    telepon2:
       type: string(20)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    ctransfer:
+    transfer:
       type: string(1)
       fixed: false
       unsigned: false
@@ -313,7 +313,7 @@ TblCustomer:
       default: N
       notnull: true
       autoincrement: false
-    ccetak_harga:
+    cetak_harga:
       type: string(1)
       fixed: false
       unsigned: false
@@ -321,7 +321,7 @@ TblCustomer:
       default: F
       notnull: true
       autoincrement: false
-    cpayment:
+    pembayaran:
       type: string(1)
       fixed: false
       unsigned: false
@@ -330,49 +330,49 @@ TblCustomer:
       notnull: true
       autoincrement: false
   relations:
-    TblSales:
-      local: ckode_sales
-      foreign: ckode_sales
+    Salesman:
+      local: kode_salesman
+      foreign: kode_salesman
       type: one
-    EdupediaLocation:
+    Lokasi:
       local: lokasi_id
       foreign: id
       type: one
-    TblLoket:
-      local: ckode_loket
-      foreign: ckode_loket
+    Loket:
+      local: kode_loket
+      foreign: kode_loket
       type: one
-    TblWilayah:
-      local: ckode_pos
-      foreign: ckodepos
+    Wilayah:
+      local: kode_pos
+      foreign: kode_pos
       type: one
-    TblBidangusaha:
-      local: ckode_usaha
-      foreign: ckode_usaha
+    BidangUsaha:
+      local: kode_usaha
+      foreign: kode_usaha
       type: one
-    TblJenisbayar:
-      local: cpayment
-      foreign: ckode_jenisbayar
+    JenisBayar:
+      local: pembayaran
+      foreign: kode_jenis_bayar
       type: one
-    TblStatuscust:
-      local: cstatus
-      foreign: ckode_statuscust
+    StatusPelanggan:
+      local: status
+      foreign: kode_status_pelanggan
       type: one
-    CustomerGroup:
-      local: ckode_customer
-      foreign: ckode_customer
+    KelompokPelanggan:
+      local: kode_pelanggan
+      foreign: kode_pelanggan
       type: many
-TblJenisbayar:
+JenisBayar:
   connection: doctrine
-  tableName: tbl_jenisbayar
+  tableName: jenis_bayar
   columns:
-    ckode_jenisbayar:
+    kode_jenis_bayar:
       type: string(1)
       fixed: false
       unsigned: false
       primary: true
       autoincrement: false
-    cketerangan:
+    keterangan:
       type: string(20)
       fixed: false
       unsigned: false
@@ -380,42 +380,42 @@ TblJenisbayar:
       notnull: false
       autoincrement: false
   relations:
-    TblCustomer:
-      local: ckode_jenisbayar
-      foreign: cpayment
+    Pelanggan:
+      local: kode_jenis_bayar
+      foreign: pembayaran
       type: many
-TblLoket:
+Loket:
   connection: doctrine
-  tableName: tbl_loket
+  tableName: loket
   columns:
-    ckode_loket:
+    kode_loket:
       type: string(3)
       fixed: false
       unsigned: false
       primary: true
       autoincrement: false
-    cketerangan:
+    keterangan:
       type: string(50)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    delivery_address:
+    alamat:
       type: string(255)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    phone:
+    telepon:
       type: string(30)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    phone2:
+    telepon2:
       type: string(30)
       fixed: false
       unsigned: false
@@ -436,7 +436,7 @@ TblLoket:
       primary: false
       notnull: true
       autoincrement: false
-    contact:
+    kontak:
       type: string(10)
       fixed: false
       unsigned: false
@@ -451,39 +451,39 @@ TblLoket:
       notnull: true
       autoincrement: false
   relations:
-    TblCustomer:
-      local: ckode_loket
-      foreign: ckode_loket
+    Pelanggan:
+      local: kode_loket
+      foreign: kode_loket
       type: many
-    TblSales:
-      local: ckode_loket
-      foreign: ckode_loket
+    Salesman:
+      local: kode_loket
+      foreign: kode_loket
       type: many
-TblSales:
+Salesman:
   connection: doctrine
-  tableName: tbl_sales
+  tableName: salesman
   columns:
-    ckode_sales:
+    kode_salesman:
       type: string(9)
       fixed: false
       unsigned: false
       primary: true
       autoincrement: false
-    ckode_loket:
+    kode_loket:
       type: string(3)
       fixed: false
       unsigned: false
       primary: false
       notnull: true
       autoincrement: false
-    cnama:
+    nama:
       type: string(30)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    ctransfer:
+    transfer:
       type: string(1)
       fixed: false
       unsigned: false
@@ -491,14 +491,14 @@ TblSales:
       default: N
       notnull: true
       autoincrement: false
-    calamat:
+    alamat:
       type: string(100)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    cstatus:
+    status:
       type: string(1)
       fixed: false
       unsigned: false
@@ -507,25 +507,25 @@ TblSales:
       notnull: true
       autoincrement: false
   relations:
-    TblLoket:
-      local: ckode_loket
-      foreign: ckode_loket
+    Loket:
+      local: kode_loket
+      foreign: kode_loket
       type: one
-    TblCustomer:
-      local: ckode_sales
-      foreign: ckode_sales
+    Pelanggan:
+      local: kode_salesman
+      foreign: kode_salesman
       type: many
-TblStatuscust:
+StatusPelanggan:
   connection: doctrine
-  tableName: tbl_statuscust
+  tableName: status_pelanggan
   columns:
-    ckode_statuscust:
+    kode_status_pelanggan:
       type: string(1)
       fixed: false
       unsigned: false
       primary: true
       autoincrement: false
-    cketerangan:
+    keterangan:
       type: string(10)
       fixed: false
       unsigned: false
@@ -533,21 +533,21 @@ TblStatuscust:
       notnull: false
       autoincrement: false
   relations:
-    TblCustomer:
-      local: ckode_statuscust
-      foreign: cstatus
+    Pelanggan:
+      local: kode_status_pelanggan
+      foreign: status
       type: many
-TblWilayah:
+Wilayah:
   connection: doctrine
-  tableName: tbl_wilayah
+  tableName: wilayah
   columns:
-    ckodepos:
+    kode_pos:
       type: string(5)
       fixed: false
       unsigned: false
       primary: true
       autoincrement: false
-    cketerangan:
+    keterangan:
       type: string()
       fixed: false
       unsigned: false
@@ -568,7 +568,7 @@ TblWilayah:
       primary: false
       notnull: true
       autoincrement: false
-    ctransfer:
+    transfer:
       type: string(1)
       fixed: false
       unsigned: false
@@ -577,7 +577,7 @@ TblWilayah:
       notnull: true
       autoincrement: false
   relations:
-    TblCustomer:
-      local: ckodepos
-      foreign: ckode_pos
+    Pelanggan:
+      local: kode_pos
+      foreign: kode_pos
       type: many
