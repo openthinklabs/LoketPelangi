@@ -64,7 +64,7 @@ return array(
 			'connectionString' => 'psql:host=localhost;dbname=loketpelangi',
 			'emulatePrepare' => true,
 			'username' => 'loketpelangi',
-			'password' => 'kampungtaqwa',
+			'password' => 'ihsantaqwa',
 			'charset' => 'utf8',
 		),
 		
