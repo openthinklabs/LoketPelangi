@@ -71,6 +71,7 @@ Yii::app()->clientScript->registerScript('lokasi',"
 	'id'=>'loket-form',
 	'enableAjaxValidation'=>false,
 )); ?>
+<?php echo $form->hiddenField($model,'kode_loket'); ?>
 
 <p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
