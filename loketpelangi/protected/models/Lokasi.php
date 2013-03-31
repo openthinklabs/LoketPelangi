@@ -35,6 +35,24 @@ class Lokasi extends CActiveRecord
 	{
 		return 'lokasi';
 	}
+	
+	public function behaviors()
+	{
+		return array(
+				'nestedSetBehavior'=>array(
+						'class'=>'ext.yiiext.behaviors.model.trees.NestedSetBehavior',
+						'rootAttribute'=>'root_id',
+						'leftAttribute'=>'lft',
+						'rightAttribute'=>'rgt',
+						'levelAttribute'=>'level',
+						'hasManyRoots'=>true
+				),
+		);
+	}	
+	
+	public function __toString() {
+		return $this->nama ;
+	}
 
 	/**
 	 * @return array validation rules for model attributes.
@@ -45,7 +63,6 @@ class Lokasi extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('created_at, updated_at', 'required'),
-			array('lft, rgt, level', 'numerical', 'integerOnly'=>true),
 			array('nama', 'length', 'max'=>255),
 			array('root_id', 'length', 'max'=>20),
 			// The following rule is used by search().

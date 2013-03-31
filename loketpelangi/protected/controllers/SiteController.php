@@ -106,4 +106,40 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+	
+	public function actionRenderPropinsiList() {
+		$data = array('negara_id'=>Yii::app()->request->getQuery('negara_id'));
+		
+		return $this->renderPartial('_propinsi_list',$data,false,false);
+	}
+	
+	public function actionRenderKabupatenKotaList() {
+		$data = array('propinsi_id'=>Yii::app()->request->getQuery('propinsi_id'));
+		
+		return $this->renderPartial('_kabkota_list',$data,false,false);		
+	}
+	
+	public function actionRenderKecamatanList() {
+		$data = array('kabkota_id'=>Yii::app()->request->getQuery('kabkota_id'));
+		
+		return $this->renderPartial('_kecamatan_list',$data,false,false);		
+	}
+	
+	public function actionRenderKelurahanList() {
+		$data = array('kecamatan_id'=>Yii::app()->request->getQuery('kecamatan_id'));
+		
+		return $this->renderPartial('_kelurahan_list',$data,false,false);		
+	}
+	
+	public function actionRenderRwList() {
+		$data = array('kelurahan_id'=>Yii::app()->request->getQuery('kelurahan_id'));
+		
+		return $this->renderPartial('_rw_list',$data,false,false);		
+	}
+	
+	public function actionRenderRtList() {
+		$data = array('rw_id'=>Yii::app()->request->getQuery('rw_id'));
+		
+		return $this->renderPartial('_rt_list',$data,false,false);		
+	}
 }
