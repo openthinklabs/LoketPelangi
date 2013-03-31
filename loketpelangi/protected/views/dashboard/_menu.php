@@ -36,3 +36,15 @@
   ?>    
   </div>
 </div>
+<hr>
+<div class="row">
+  <div class="span3">
+  <?php 
+	  $this->widget('bootstrap.widgets.TbButton',array(
+	  		'label' => 'Loket',
+	  		'size' => 'large',
+            'url'=>Yii::app()->createUrL('loket/index')
+	  ));  
+  ?>    
+  </div>
+</div>
