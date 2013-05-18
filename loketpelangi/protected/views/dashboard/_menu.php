@@ -20,10 +20,11 @@
   <div class="span3">
   <?php 
 	  $this->widget('bootstrap.widgets.TbButton',array(
-	  		'label' => 'Transaksi',
-	  		'size' => 'large'
+	  		'label' => 'Transaksi ('. Transaksi::model()->count().'/'.TransaksiDetail::model()->count().')',
+	  		'size' => 'large',
+            'url'=>Yii::app()->createUrL('transaksi/index')
 	  ));  
-  ?>    
+  ?>  
   </div>
 </div>
 <hr>
