@@ -6,6 +6,7 @@ $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
 				'Manage'),
 ));
 
+
 $this->menu=array(
 	array('label'=>'List Pelanggan','url'=>array('index')),
 	array('label'=>'Create Pelanggan','url'=>array('create')),
@@ -45,31 +46,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'kode_pelanggan',
+        'nama',
+        'rw_id',
+        'rt_id',
 		'kode_salesman',
-		'kode_loket',
-		'kode_usaha',
-		'kode_pos',
-		'lokasi_id',
-		/*
-		'nama',
-		'nama_singkat',
-		'alamat',
-		'alamat_tagih',
-		'dtgl_masuk',
-		'attn',
-		'telepon',
-		'npwp',
-		'term',
-		'status',
-		'takakura_pinjaman',
-		'takakura_uang_jaminan',
-		'tong_sampah_pinjaman',
-		'tong_sampah_uang_jaminan',
-		'telepon2',
-		'transfer',
-		'cetak_harga',
-		'pembayaran',
-		*/
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

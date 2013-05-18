@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row-fluid">
   <div class="span3">
   <?php 
 	  $this->widget('bootstrap.widgets.TbButton',array(
-	  		'label' => 'Pelanggan',
+	  		'label' => 'Pelanggan ('. Pelanggan::model()->count().')',
 	  		'size' => 'large',
 	  		'url'=>Yii::app()->createUrL('pelanggan/index')
 	  ));  
@@ -26,7 +26,7 @@
   </div>
 </div>
 <hr>
-<div class="row">
+<div class="row-fluid">
   <div class="span3">
   <?php 
 	  $this->widget('bootstrap.widgets.TbButton',array(
@@ -37,14 +37,57 @@
   </div>
 </div>
 <hr>
-<div class="row">
+
+<fieldset>
+  <legend>Data Referensi</legend>
+<div class="row-fluid">
   <div class="span3">
   <?php 
 	  $this->widget('bootstrap.widgets.TbButton',array(
-	  		'label' => 'Loket',
+	  		'label' => 'Loket ('. Loket::model()->count().')',
 	  		'size' => 'large',
             'url'=>Yii::app()->createUrL('loket/index')
 	  ));  
   ?>    
   </div>
+  <div class="span3">
+  <?php 
+	  $this->widget('bootstrap.widgets.TbButton',array(
+	  		'label' => 'Bidang usaha ('. BidangUsaha::model()->count().')',
+	  		'size' => 'large',
+            'url'=>Yii::app()->createUrL('bidangUsaha/index')
+	  ));  
+  ?>    
+  </div>  
+  <div class="span3">
+  <?php 
+	  $this->widget('bootstrap.widgets.TbButton',array(
+	  		'label' => 'Salesman ('. Salesman::model()->count().')',
+	  		'size' => 'large',
+            'url'=>Yii::app()->createUrL('salesman/index')
+	  ));  
+  ?>    
+  </div>    
+  <div class="span3">
+  <?php 
+	  $this->widget('bootstrap.widgets.TbButton',array(
+	  		'label' => 'Kode Pos ('. Wilayah::model()->count().')',
+	  		'size' => 'large',
+            'url'=>Yii::app()->createUrL('kodepos/index')
+	  ));  
+  ?>    
+  </div>      
 </div>
+<br>
+<div class="row-fluid">
+  <div class="span3">
+  <?php 
+	  $this->widget('bootstrap.widgets.TbButton',array(
+	  		'label' => 'Status Pelanggan ('. StatusPelanggan::model()->count().')',
+	  		'size' => 'large',
+            'url'=>Yii::app()->createUrL('statusPelanggan/index')
+	  ));  
+  ?>    
+  </div>      
+</div>
+</fieldset>

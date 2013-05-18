@@ -1,7 +1,8 @@
 <?php
-$this->breadcrumbs=array(
-	'Status Pelanggans',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+		'links'=>array('Dashboard'=>Yii::app()->createUrl('dashboard/index'),
+				'Status Pelanggan'),
+));
 
 $this->menu=array(
 	array('label'=>'Create StatusPelanggan','url'=>array('create')),

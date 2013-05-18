@@ -13,13 +13,25 @@
 
 	<?php echo $form->textFieldRow($model,'kode_pos',array('class'=>'span5','maxlength'=>5)); ?>
 
-	<?php echo $form->textFieldRow($model,'lokasi_id',array('class'=>'span5','maxlength'=>20)); ?>
+	<?php echo $form->textFieldRow($model,'negara_id',array('class'=>'span5','maxlength'=>20)); ?>
+	
+	<?php echo $form->textFieldRow($model,'propinsi_id',array('class'=>'span5','maxlength'=>20)); ?>
+	
+	<?php echo $form->textFieldRow($model,'kabkota_id',array('class'=>'span5','maxlength'=>20)); ?>
+	
+	<?php echo $form->textFieldRow($model,'kecamatan_id',array('class'=>'span5','maxlength'=>20)); ?>
+	
+	<?php echo $form->textFieldRow($model,'kelurahan_id',array('class'=>'span5','maxlength'=>20)); ?> 
+	
+	<?php echo $form->textFieldRow($model,'rw_id',array('class'=>'span5','maxlength'=>20)); ?>
+	
+	<?php echo $form->textFieldRow($model,'rt_id',array('class'=>'span5','maxlength'=>20)); ?>
 
 	<?php echo $form->textFieldRow($model,'nama',array('class'=>'span5','maxlength'=>100)); ?>
 
 	<?php echo $form->textFieldRow($model,'nama_singkat',array('class'=>'span5','maxlength'=>50)); ?>
 
-	<?php echo $form->textFieldRow($model,'alamat',array('class'=>'span5','maxlength'=>100)); ?>
+	<?php echo $form->textFieldRow($model,'jalan',array('class'=>'span5','maxlength'=>100)); ?>
 
 	<?php echo $form->textFieldRow($model,'alamat_tagih',array('class'=>'span5','maxlength'=>100)); ?>
 

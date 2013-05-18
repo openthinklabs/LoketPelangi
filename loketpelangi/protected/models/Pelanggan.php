@@ -79,9 +79,9 @@ class Pelanggan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('kode_salesman, kode_loket, kode_usaha, kode_pos', 'required'),
+			array('nama, kode_loket, kode_usaha, kode_pos, negara_id', 'required'),
 			array('term, takakura_pinjaman, tong_sampah_pinjaman', 'numerical', 'integerOnly'=>true),
-			array('kode_pelanggan', 'length', 'max'=>22),
+			array('kode_pelanggan', 'length', 'max'=>100),
 			array('kode_salesman', 'length', 'max'=>18),
 			array('kode_loket', 'length', 'max'=>50),
 			array('kode_usaha', 'length', 'max'=>12),
@@ -206,5 +206,20 @@ class Pelanggan extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	public function nextKodePelanggan() {
+		$sql = "SELECT  FROM pelanggan ;" ;
+		
+		$result = Yii::app()->db->createCommand()
+		           ->select("MAX(SUBSTR(kode_pelanggan,STRPOS(kode_pelanggan,':')+1))::integer+1 AS next_id_pelanggan")
+		           ->from('pelanggan')
+		           ->queryScalar(); 
+		
+		if($result == '') {
+			$result = 1; 
+		}
+		
+		return $result ;
 	}
 }

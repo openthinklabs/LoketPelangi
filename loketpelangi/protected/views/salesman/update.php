@@ -1,9 +1,11 @@
 <?php
-$this->breadcrumbs=array(
-	'Salesmen'=>array('index'),
-	$model->kode_salesman=>array('view','id'=>$model->kode_salesman),
-	'Update',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+		'links'=>array('Dashboard'=>Yii::app()->createUrl('dashboard/index'),
+					'Salesmen'=>array('index'),
+				     $model->kode_salesman=>array('view','id'=>$model->kode_salesman),
+				     'Update'),
+));
+
 
 $this->menu=array(
 	array('label'=>'List Salesman','url'=>array('index')),

@@ -1,6 +1,6 @@
 <?php 
   Yii::app()->clientScript->registerScript('lokasi'," 
-  		$('#negara_id').unbind('change').bind('change', function(){ 
+  		$('#Pelanggan_negara_id').unbind('change').bind('change', function(){ 
   		  var negara_id = $(this).select2('val');
   		  $.get('".Yii::app()->createUrl('site/renderPropinsiList')."',{negara_id:negara_id},function(data){
   		  		$('#propinsi_list').html(data);
@@ -89,7 +89,21 @@
 		  </div>
 		  <?php } ?>
 		  <div class="span6">
-		    <?php echo $form->textFieldRow($model,'kode_loket',array('class'=>'span5','maxlength'=>3)); ?>
+		    <?php echo CHtml::activeLabelEx($model,'kode_loket');?>
+			<?php 
+			$this->widget('bootstrap.widgets.TbSelect2', array(
+					'asDropDownList' => true,
+					'name' => 'Pelanggan[kode_loket]',
+					'data'=>CHtml::listData(Loket::model()->findAll(), 'kode_loket', 'kode_loket'),
+					'options'=>array(
+							'placeholder' => 'Pilih Loket',
+					),
+					'htmlOptions'=>array(
+							'prompt'=>'',
+							'options'=>array($model->kode_loket=>array('selected'=>true))
+					)
+			));
+			?>
 		  </div>		  	    
 	    </div>
 	    <div class="row">
@@ -102,7 +116,8 @@
 	    </div>	    
 	    <div class="row">
 		  <div class="span6">
-		    <?php echo $form->textFieldRow($model,'dtgl_masuk',array('class'=>'span5')); ?>    
+		    <?php echo CHtml::activeLabelEx($model,'dtgl_masuk');?>
+		    <?php echo CHtml::activeDateField($model,'dtgl_masuk') ;?>
 		  </div>
 		  <div class="span6">
 		    <?php echo $form->textFieldRow($model,'npwp',array('class'=>'span5','maxlength'=>20)); ?>    
@@ -110,10 +125,38 @@
 	    </div>	    	    
 	    <div class="row">
 		  <div class="span6">
-		    <?php echo $form->textFieldRow($model,'kode_usaha',array('class'=>'span5','maxlength'=>6)); ?>      
+		    <?php echo CHtml::activeLabelEx($model,'kode_usaha');?>
+			<?php 
+			$this->widget('bootstrap.widgets.TbSelect2', array(
+					'asDropDownList' => true,
+					'name' => 'Pelanggan[kode_usaha]',
+					'data'=>CHtml::listData(BidangUsaha::model()->findAll(), 'kode_usaha', 'keterangan'),
+					'options'=>array(
+							'placeholder' => 'Pilih Bidang Usaha',
+					),
+					'htmlOptions'=>array(
+							'prompt'=>'',
+							'options'=>array($model->kode_usaha=>array('selected'=>true))
+					)
+			));
+			?>		        
 		  </div>
 		  <div class="span6">
-		    <?php echo $form->textFieldRow($model,'kode_salesman',array('class'=>'span5','maxlength'=>9)); ?>    
+		    <?php echo CHtml::activeLabelEx($model,'kode_salesman');?>
+			<?php 
+			$this->widget('bootstrap.widgets.TbSelect2', array(
+					'asDropDownList' => true,
+					'name' => 'Pelanggan[kode_salesman]',
+					'data'=>CHtml::listData(Salesman::model()->findAll(), 'kode_salesman', 'nama'),
+					'options'=>array(
+							'placeholder' => 'Pilih Salesman',
+					),
+					'htmlOptions'=>array(
+							'prompt'=>'',
+							'options'=>array($model->kode_salesman=>array('selected'=>true))
+					)
+			));
+			?>		        
 		  </div>		  	    
 	    </div>	    	    	    
 	    <div class="row">
@@ -121,7 +164,21 @@
 		    <?php echo $form->textFieldRow($model,'pembayaran',array('class'=>'span5','maxlength'=>1)); ?>        
 		  </div>
 		  <div class="span6">
-		    <?php echo $form->textFieldRow($model,'status',array('class'=>'span5','maxlength'=>1)); ?>    
+		    <?php echo CHtml::activeLabelEx($model,'status');?>
+			<?php 
+			$this->widget('bootstrap.widgets.TbSelect2', array(
+					'asDropDownList' => true,
+					'name' => 'Pelanggan[status]',
+					'data'=>CHtml::listData(StatusPelanggan::model()->findAll(), 'kode_status_pelanggan', 'keterangan'),
+					'options'=>array(
+							'placeholder' => 'Pilih Status',
+					),
+					'htmlOptions'=>array(
+							'prompt'=>'',
+							'options'=>array($model->status=>array('selected'=>true))
+					)
+			));
+			?>		        
 		  </div>		  	    
 	    </div>	    	    	    	    
 	  </fieldset>
@@ -154,7 +211,7 @@
           <?php 
           $this->widget('bootstrap.widgets.TbSelect2', array(
           		'asDropDownList' => true,
-          		'name' => 'negara_id',
+          		'name' => 'Pelanggan[negara_id]',
                 'data'=>CHtml::listData(Lokasi::model()->roots()->findAll(), 'id', 'nama'),
                 'attribute'=>array('value'=>'tes'), 
                 'options'=>array(
@@ -162,6 +219,7 @@
                  ),
                 'htmlOptions'=>array( 
                   'prompt'=>'',
+                  'options'=>array($model->negara_id=>array('selected'=>true))
                  )
           		));          
           ?>	      
@@ -217,7 +275,21 @@
 		    <?php echo $form->textFieldRow($model,'jalan',array('class'=>'span5','maxlength'=>100)); ?>
 		  </div>
 		  <div class="span6">
-		    <?php echo $form->textFieldRow($model,'kode_pos',array('class'=>'span5','maxlength'=>5)); ?>
+		    <?php echo CHtml::activeLabelEx($model,'kode_pos');?>
+			<?php 
+			$this->widget('bootstrap.widgets.TbSelect2', array(
+					'asDropDownList' => true,
+					'name' => 'Pelanggan[kode_pos]',
+					'data'=>CHtml::listData(Wilayah::model()->findAll(), 'kode_pos', 'kode_pos'),
+					'options'=>array(
+							'placeholder' => 'Pilih Kode Pos',
+					),
+					'htmlOptions'=>array(
+							'prompt'=>'',
+							'options'=>array($model->kode_pos=>array('selected'=>true))
+					)
+			));
+			?>		        
 		  </div>		  	    
 	    </div>
 	    <!-- 

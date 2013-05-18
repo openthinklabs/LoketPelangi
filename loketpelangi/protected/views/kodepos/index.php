@@ -1,7 +1,9 @@
 <?php
-$this->breadcrumbs=array(
-	'Wilayahs',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+		'links'=>array('Dashboard'=>Yii::app()->createUrl('dashboard/index'),
+				'Kode Pos'),
+));
+
 
 $this->menu=array(
 	array('label'=>'Create Wilayah','url'=>array('create')),

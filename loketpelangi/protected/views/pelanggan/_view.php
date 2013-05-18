@@ -20,21 +20,17 @@
 	<?php echo CHtml::encode($data->kode_pos); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('lokasi_id')); ?>:</b>
-	<?php echo CHtml::encode($data->lokasi_id); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('nama')); ?>:</b>
 	<?php echo CHtml::encode($data->nama); ?>
 	<br />
 
-	<?php /*
+	 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('nama_singkat')); ?>:</b>
 	<?php echo CHtml::encode($data->nama_singkat); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('alamat')); ?>:</b>
-	<?php echo CHtml::encode($data->alamat); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('jalan')); ?>:</b>
+	<?php echo CHtml::encode($data->jalan); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('alamat_tagih')); ?>:</b>
@@ -96,7 +92,5 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('pembayaran')); ?>:</b>
 	<?php echo CHtml::encode($data->pembayaran); ?>
 	<br />
-
-	*/ ?>
 
 </div>

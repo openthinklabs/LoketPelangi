@@ -1,9 +1,10 @@
 <?php
-$this->breadcrumbs=array(
-	'Wilayahs'=>array('index'),
-	$model->kode_pos=>array('view','id'=>$model->kode_pos),
-	'Update',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+		'links'=>array('Dashboard'=>Yii::app()->createUrl('dashboard/index'),
+				'Kode Pos'=>array('index'),
+				$model->kode_pos=>array('view','id'=>$model->kode_pos),
+				'Update'),
+));
 
 $this->menu=array(
 	array('label'=>'List Wilayah','url'=>array('index')),

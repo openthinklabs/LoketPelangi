@@ -68,7 +68,16 @@ class PelangganController extends Controller
 
 		if(isset($_POST['Pelanggan']))
 		{   
-			$model->attributes=$_POST['Pelanggan'];
+			$_POST['Pelanggan']['propinsi_id']    = $_POST['propinsi_id'] ; 
+			$_POST['Pelanggan']['kabkota_id']     = $_POST['kabkota_id'] ; 
+			$_POST['Pelanggan']['kecamatan_id']   = $_POST['kecamatan_id'] ; 
+			$_POST['Pelanggan']['kelurahan_id']   = $_POST['kelurahan_id'] ;
+			$_POST['Pelanggan']['rw_id']          = $_POST['rw_id'] ;
+			$_POST['Pelanggan']['rt_id']          = $_POST['rt_id'] ;
+			$_POST['Pelanggan']['kode_pelanggan'] = $_POST['Pelanggan']['kode_loket'].":".Pelanggan::model()->nextKodePelanggan();  
+
+			$data  = $_POST['Pelanggan'] ;			 
+			$model->attributes=$data;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->kode_pelanggan));
 		}
@@ -137,12 +146,12 @@ class PelangganController extends Controller
 	 * Manages all models.
 	 */
 	public function actionAdmin()
-	{
+	{ 
 		$model=new Pelanggan('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Pelanggan']))
 			$model->attributes=$_GET['Pelanggan'];
-
+		
 		$this->render('admin',array(
 			'model'=>$model,
 		));

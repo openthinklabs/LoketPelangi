@@ -1,9 +1,11 @@
 <?php
-$this->breadcrumbs=array(
-	'Status Pelanggans'=>array('index'),
-	$model->kode_status_pelanggan=>array('view','id'=>$model->kode_status_pelanggan),
-	'Update',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+		'links'=>array('Dashboard'=>Yii::app()->createUrl('dashboard/index'),
+				'Status Pelanggan'=>array('index'),
+				$model->kode_status_pelanggan=>array('view','id'=>$model->kode_status_pelanggan),
+				'Update'),
+));
+
 
 $this->menu=array(
 	array('label'=>'List StatusPelanggan','url'=>array('index')),

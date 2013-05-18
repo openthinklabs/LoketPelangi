@@ -45,7 +45,7 @@ class Salesman extends CActiveRecord
 		return array(
 			array('kode_loket', 'required'),
 			array('kode_salesman', 'length', 'max'=>9),
-			array('kode_loket', 'length', 'max'=>3),
+			array('kode_loket', 'length', 'max'=>50),
 			array('nama', 'length', 'max'=>30),
 			array('transfer, status', 'length', 'max'=>1),
 			array('alamat', 'length', 'max'=>100),

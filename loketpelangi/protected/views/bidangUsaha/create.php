@@ -1,8 +1,10 @@
 <?php
-$this->breadcrumbs=array(
-	'Bidang Usahas'=>array('index'),
-	'Create',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+		'links'=>
+		array('Dashboard'=>Yii::app()->createUrl('dashboard/index'),
+				'Bidang Usaha'=>array('index'),
+				'Tambah'),
+));
 
 $this->menu=array(
 	array('label'=>'List BidangUsaha','url'=>array('index')),
