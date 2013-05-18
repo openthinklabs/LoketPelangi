@@ -64,11 +64,21 @@ class LoketController extends Controller
 		$model=new Loket;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Loket']))
 		{
-			$model->attributes=$_POST['Loket'];
+			$_POST['Loket']['negara_id']    =  $_POST['negara_id'];
+			$_POST['Loket']['propinsi_id']  =  $_POST['propinsi_id'];
+			$_POST['Loket']['kabkota_id']   =  $_POST['kabkota_id'];
+			$_POST['Loket']['kecamatan_id'] =  $_POST['kecamatan_id'];
+			$_POST['Loket']['kelurahan_id'] =  $_POST['kelurahan_id'];
+			$_POST['Loket']['rw_id']        =  $_POST['rw_id'];
+			$_POST['Loket']['rt_id']        =  $_POST['rt_id'];
+			$data                           =  $_POST['Loket'];
+			
+			$data['kode_loket'] =  $_POST['Loket']['negara_id']."-".$_POST['Loket']['propinsi_id']."-".$_POST['Loket']['kabkota_id']."-".$_POST['Loket']['kecamatan_id']."-".$_POST['Loket']['kelurahan_id']."-".$_POST['Loket']['rw_id']."-".$_POST['Loket']['rt_id'] ;
+			$model->attributes  =  $data ;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->kode_loket));
 		}

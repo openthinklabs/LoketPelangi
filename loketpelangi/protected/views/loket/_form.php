@@ -10,6 +10,7 @@ Yii::app()->clientScript->registerScript('lokasi',"
   		  		$('#kabkota_list, #kecamatan_list, #kelurahan_id, #rw_list, #rt_list').html('<span class=uneditable-input>-</span>');
           })
         }) ;
+  
 
   	    $('body').on('change','#propinsi_id',function(){
   		  	var propinsi_id = $(this).select2('val');
@@ -63,13 +64,18 @@ Yii::app()->clientScript->registerScript('lokasi',"
   		  		  placeholder: 'Pilih RT',
                 });
             })
-        }) ;
+        }) ;  		   
   ") ;
 ?>
 
+
+
+
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'loket-form',
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
+	'enableClientValidation'=>true,
+	'focus'=>array($model,'jalan'),
 )); ?>
 <?php echo $form->hiddenField($model,'kode_loket'); ?>
 
@@ -89,12 +95,12 @@ Yii::app()->clientScript->registerScript('lokasi',"
           		'asDropDownList' => true,
           		'name' => 'negara_id',
                 'data'=>CHtml::listData(Lokasi::model()->roots()->findAll(), 'id', 'nama'),
-                'attribute'=>array('value'=>'tes'), 
                 'options'=>array(
                   'placeholder' => 'Pilih Negara',                    
                  ),
                 'htmlOptions'=>array( 
                   'prompt'=>'',
+                  'options'=>array($model->negara_id =>array('selected'=>true)),
                  )
           		));          
           ?>	      
@@ -107,13 +113,21 @@ Yii::app()->clientScript->registerScript('lokasi',"
 	      <div class="span6">
 	        <?php echo CHtml::label("Propinsi <span class='required'>*</span>", "propinsi_id") ;?>
 	        <div  id="propinsi_list">
-	          <span class="uneditable-input">Pilih Negara Terlebih dahulu</span>
+	          <?php if($model->kode_loket){?>
+	          <?php $this->renderPartial('/site/_propinsi_list',array('negara_id'=>$model->negara_id,'propinsi_id'=>$model->propinsi_id),false,false); ?> 
+	          <?php } else { ?> 
+	          <span class="uneditable-input">Pilih Negara Terlebih dahulu</span> 
+	          <?php } ?> 
 	        </div>	      
 	      </div>	      	    
 	      <div class="span6">
 	        <?php echo CHtml::label("Kotamadya/Kabupaten <span class='required'>*</span>", "kota_kab_id") ;?>
 	        <div id="kabkota_list">
+	          <?php if($model->kode_loket){ ?> 
+	          <?php $this->renderPartial('/site/_kabkota_list',array('propinsi_id'=>$model->propinsi_id,'kabkota_id'=>$model->kabkota_id),false,false); ?>
+	          <?php } else { ?>
 	          <span class="uneditable-input">Pilih Propinsi Terlebih dahulu</span>
+	          <?php } ?>
 	        </div>	      
 	      </div>
 	    </div>
@@ -121,13 +135,21 @@ Yii::app()->clientScript->registerScript('lokasi',"
 	      <div class="span6">
 	        <?php echo CHtml::label("Kecamatan <span class='required'>*</span>", "kecamatan_id") ;?>
 	        <div id="kecamatan_list">
+	          <?php if($model->kode_loket){?> 
+	          <?php $this->renderPartial('/site/_kecamatan_list',array('kabkota_id'=>$model->kabkota_id,'kecamatan_id'=>$model->kecamatan_id),false,false); ?>
+	          <?php } else { ?>
 	          <span class="uneditable-input">Pilih Kotamadya/Kabupaten Terlebih dahulu</span>
+	          <?php } ?>
 	        </div>	      	      	      
 	      </div>
 	      <div class="span6">
 	        <?php echo CHtml::label("Kelurahan <span class='required'>*</span>", "kelurahan_id") ;?>
 	        <div id="kelurahan_list">
-	          <span class="uneditable-input">Pilih Kecamatan Terlebih dahulu</span>
+	          <?php if($model->kode_loket){?> 
+	          <?php $this->renderPartial('/site/_kelurahan_list',array('kecamatan_id'=>$model->kecamatan_id,'kelurahan_id'=>$model->kelurahan_id),false,false); ?>
+	          <?php } else {?>
+	          <span class="uneditable-input">Pilih Kecamatan Terlebih dahulu</span> 
+	          <?php } ?>
 	        </div>	      	      	      	      
 	      </div>	      
 	    </div>
@@ -135,19 +157,27 @@ Yii::app()->clientScript->registerScript('lokasi',"
 	      <div class="span6">
 	        <?php echo CHtml::label("RW", "rw_id") ;?>
 	        <div id="rw_list">
-	          <span class="uneditable-input">Pilih Kelurahan Terlebih dahulu</span>
+	          <?php if($model->kode_loket){?>
+	          <?php $this->renderPartial('/site/_rw_list',array('kelurahan_id'=>$model->kelurahan_id,'rw_id'=>$model->rw_id),false,false); ?>
+	          <?php } else {?>
+	          <span class="uneditable-input">Pilih Kelurahan Terlebih dahulu</span> 
+	          <?php } ?>
 	        </div>	      	      	      	      	      
 	      </div>
 	      <div class="span6">
 	        <?php echo CHtml::label("RT", "rt_id") ;?>
 	        <div id="rt_list">
-	          <span class="uneditable-input">Pilih RW Terlebih dahulu</span>
+	          <?php if($model->kode_loket){?>
+	          <?php $this->renderPartial('/site/_rt_list',array('rw_id'=>$model->rw_id,'rt_id'=>$model->rt_id),false,false); ?> 
+	          <?php } else {?>
+	          <span class="uneditable-input">Pilih RW Terlebih dahulu</span> 
+	          <?php } ?>
 	        </div>	      	      	      	      	      	      
 	      </div>	      
 	    </div>
 	   <div class="row">
 	     <div class="span6">
-	        <?php echo $form->textFieldRow($model,'jalan',array('class'=>'span5','maxlength'=>3)); ?>
+	        <?php echo $form->textFieldRow($model,'jalan',array('class'=>'span5','maxlength'=>200)); ?>
 	     </div>
 	     <div class="span6">
 	     &nbsp;

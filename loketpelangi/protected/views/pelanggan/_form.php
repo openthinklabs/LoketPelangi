@@ -69,7 +69,9 @@
 
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'pelanggan-form',
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
+	'enableClientValidation'=>true,
+	'focus'=>array($model,'nama'),
 )); ?>
 
 	<p class="help-block">Fields with <span class="required">*</span> are required.</p>
@@ -81,9 +83,11 @@
 	  <fieldset>
 	    <legend>Identitas</legend>
 	    <div class="row">
+	      <?php if($model->kode_pelanggan){?>
 		  <div class="span6">
 		    <?php echo $form->textFieldRow($model,'kode_pelanggan',array('class'=>'span5','maxlength'=>11)); ?>
 		  </div>
+		  <?php } ?>
 		  <div class="span6">
 		    <?php echo $form->textFieldRow($model,'kode_loket',array('class'=>'span5','maxlength'=>3)); ?>
 		  </div>		  	    
@@ -210,20 +214,22 @@
 	    </div>
 	    <div class="row">
 		  <div class="span6">
-		    <?php echo $form->textFieldRow($model,'alamat',array('class'=>'span5','maxlength'=>100)); ?>
+		    <?php echo $form->textFieldRow($model,'jalan',array('class'=>'span5','maxlength'=>100)); ?>
 		  </div>
 		  <div class="span6">
-		    <?php echo $form->textFieldRow($model,'alamat_tagih',array('class'=>'span5','maxlength'=>100)); ?>
+		    <?php echo $form->textFieldRow($model,'kode_pos',array('class'=>'span5','maxlength'=>5)); ?>
 		  </div>		  	    
 	    </div>
+	    <!-- 
 	    <div class="row">
 		  <div class="span6">
-		    <?php echo $form->textFieldRow($model,'lokasi_id',array('class'=>'span5','maxlength'=>20)); ?>    
+		    		    <?php echo $form->textFieldRow($model,'alamat_tagih',array('class'=>'span5','maxlength'=>100)); ?>    
 		  </div>
 		  <div class="span6">
-		    <?php echo $form->textFieldRow($model,'kode_pos',array('class'=>'span5','maxlength'=>5)); ?> 
+		     
 		  </div>		  	    
-	    </div>	    
+	    </div>
+	     -->	    
 	  </fieldset>
 	  </div>
 	</div>		

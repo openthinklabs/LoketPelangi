@@ -64,10 +64,10 @@ class PelangganController extends Controller
 		$model=new Pelanggan;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Pelanggan']))
-		{
+		{   
 			$model->attributes=$_POST['Pelanggan'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->kode_pelanggan));

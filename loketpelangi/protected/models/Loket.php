@@ -58,9 +58,9 @@ class Loket extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('jalan, telepon, telepon2, fax, email, kontak, inactive', 'required'),
+			array('jalan, email, kontak', 'required'),
 			array('inactive', 'numerical', 'integerOnly'=>true),
-			array('kode_loket', 'length', 'max'=>6),
+			array('kode_loket', 'length', 'max'=>50),
 			array('keterangan', 'length', 'max'=>100),
 			array('jalan', 'length', 'max'=>510),
 			array('telepon, telepon2, fax', 'length', 'max'=>60),

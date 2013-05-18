@@ -9,6 +9,7 @@ $this->widget('bootstrap.widgets.TbSelect2', array(
 		),
 		'htmlOptions'=>array(
 				'prompt'=>'',
+				'options'=>array($rw_id=>array('selected'=>true))
 		)
 ));
 } else { 
