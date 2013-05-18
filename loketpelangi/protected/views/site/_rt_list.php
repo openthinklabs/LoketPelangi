@@ -1,8 +1,11 @@
 <?php 
+if($name == "") {
+	$name = "rt_id" ;
+}
 if(count(Lokasi::model()->findByPk($rw_id)->children()->findAll()) > 0) {
 $this->widget('bootstrap.widgets.TbSelect2', array(
 		'asDropDownList' => true,
-		'name' => 'rt_id',
+		'name' => $name,
 		'data'=>CHtml::listData(Lokasi::model()->findByPk($rw_id)->children()->findAll(), 'id', 'nama'),
 		'options'=>array(
 				'placeholder' => 'Pilih RT',

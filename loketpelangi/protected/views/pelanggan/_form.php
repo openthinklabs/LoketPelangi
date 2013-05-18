@@ -2,64 +2,64 @@
   Yii::app()->clientScript->registerScript('lokasi'," 
   		$('#Pelanggan_negara_id').unbind('change').bind('change', function(){ 
   		  var negara_id = $(this).select2('val');
-  		  $.get('".Yii::app()->createUrl('site/renderPropinsiList')."',{negara_id:negara_id},function(data){
+  		  $.get('".Yii::app()->createUrl('site/renderPropinsiList')."',{negara_id:negara_id,name:'Pelanggan[propinsi_id]'},function(data){
   		  		$('#propinsi_list').html(data);
-  		  		$('#propinsi_id').select2({ 
+  		  		$('#Pelanggan_propinsi_id').select2({ 
   		  		  placeholder: 'Pilih Propinsi',    
                 });
   		  		$('#kabkota_list, #kecamatan_list, #kelurahan_id, #rw_list, #rt_list').html('<span class=uneditable-input>-</span>');
           })
         }) ;
   		  		
-  	    $('body').on('change','#propinsi_id',function(){ 
+  	    $('body').on('change','#Pelanggan_propinsi_id',function(){ 
   		  	var propinsi_id = $(this).select2('val');
-  		    $.get('".Yii::app()->createUrl('site/renderKabupatenKotaList')."',{propinsi_id:propinsi_id},function(data){
+  		    $.get('".Yii::app()->createUrl('site/renderKabupatenKotaList')."',{propinsi_id:propinsi_id,name:'Pelanggan[propinsi_id]'},function(data){
   		  		$('#kabkota_list').html(data);
-  		  		$('#kabkota_id').select2({ 
+  		  		$('#Pelanggan_kabkota_id').select2({ 
   		  		  placeholder: 'Pilih Kabupaten/Kota',    
                 });
   		        $('#kecamatan_list, #kelurahan_list, #rw_list, #rt_list').html('<span class=uneditable-input>-</span>');
             })
         }) ;
   		    		
-  	    $('body').on('change','#kabkota_id',function(){ 
+  	    $('body').on('change','#Pelanggan_kabkota_id',function(){ 
   		  	var kabkota_id = $(this).select2('val');
-  		    $.get('".Yii::app()->createUrl('site/renderKecamatanList')."',{kabkota_id:kabkota_id},function(data){
+  		    $.get('".Yii::app()->createUrl('site/renderKecamatanList')."',{kabkota_id:kabkota_id,name:'Pelanggan[kabkota_id]'},function(data){
   		  		$('#kecamatan_list').html(data);
-  		  		$('#kecamatan_id').select2({ 
+  		  		$('#Pelanggan_kecamatan_id').select2({ 
   		  		  placeholder: 'Pilih Kecamatan',    
                 });
   		        $('#kelurahan_list, #rw_list, #rt_list').html('<span class=uneditable-input>-</span>');
             })
         }) ;  		    		
   		    		
-  	    $('body').on('change','#kecamatan_id',function(){ 
+  	    $('body').on('change','#Pelanggan_kecamatan_id',function(){ 
   		  	var kecamatan_id = $(this).select2('val');
-  		    $.get('".Yii::app()->createUrl('site/renderKelurahanList')."',{kecamatan_id:kecamatan_id},function(data){
+  		    $.get('".Yii::app()->createUrl('site/renderKelurahanList')."',{kecamatan_id:kecamatan_id,name:'Pelanggan[kecamatan_id]'},function(data){
   		  		$('#kelurahan_list').html(data);
-  		  		$('#kelurahan_id').select2({ 
+  		  		$('#Pelanggan_kelurahan_id').select2({ 
   		  		  placeholder: 'Pilih Kelurahan',    
                 });
   		    	$('#rw_list, #rt_list').html('<span class=uneditable-input>-</span>');
             })
         }) ;  		    		  		    		
   		    		
-  	    $('body').on('change','#kelurahan_id',function(){ 
+  	    $('body').on('change','#Pelanggan_kelurahan_id',function(){ 
   		  	var kelurahan_id = $(this).select2('val');
-  		    $.get('".Yii::app()->createUrl('site/renderRwList')."',{kelurahan_id:kelurahan_id},function(data){
+  		    $.get('".Yii::app()->createUrl('site/renderRwList')."',{kelurahan_id:kelurahan_id,name:'Pelanggan[kelurahan_id]'},function(data){
   		  		$('#rw_list').html(data);
-  		  		$('#rw_id').select2({ 
+  		  		$('#Pelanggan_rw_id').select2({ 
   		  		  placeholder: 'Pilih RW',    
                 });
   		    	$('#rt_list').html('<span class=uneditable-input>-</span>');
             })
         }) ;  		    		  		    		  		    		
   		    		
-  	    $('body').on('change','#rw_id',function(){ 
+  	    $('body').on('change','#Pelanggan_rw_id',function(){ 
   		  	var rw_id = $(this).select2('val');
-  		    $.get('".Yii::app()->createUrl('site/renderRtList')."',{rw_id:rw_id},function(data){
+  		    $.get('".Yii::app()->createUrl('site/renderRtList')."',{rw_id:rw_id,name:'Pelanggan[rw_id]'},function(data){
   		  		$('#rt_list').html(data);
-  		  		$('#rt_id').select2({ 
+  		  		$('#Pelanggan_rt_id').select2({ 
   		  		  placeholder: 'Pilih RT',    
                 });
             })
@@ -83,7 +83,7 @@
 	  <fieldset>
 	    <legend>Identitas</legend>
 	    <div class="row">
-	      <?php if($model->kode_pelanggan){?>
+	      <?php if($model->kode_pelanggan !== "" && $model->kode_loket != ""){?>
 		  <div class="span6">
 		    <?php echo $form->textFieldRow($model,'kode_pelanggan',array('class'=>'span5','maxlength'=>11)); ?>
 		  </div>
@@ -207,7 +207,7 @@
 	    <legend>Alamat</legend>
 	    <div class="row">
 	      <div class="span6">
-	      <?php echo CHtml::label("Negara <span class='required'>*</span>", "negara_id") ;?>
+	      <?php echo CHtml::ActivelabelEx($model, "negara_id") ;?>
           <?php 
           $this->widget('bootstrap.widgets.TbSelect2', array(
           		'asDropDownList' => true,
@@ -230,13 +230,13 @@
 	    </div>
 	    <div class="row">
 	      <div class="span6">
-	        <?php echo CHtml::label("Propinsi <span class='required'>*</span>", "propinsi_id") ;?>
+	        <?php echo CHtml::ActivelabelEx($model, "propinsi_id") ;?>
 	        <div  id="propinsi_list">
 	          <span class="uneditable-input">Pilih Negara Terlebih dahulu</span>
 	        </div>	      
 	      </div>	      	    
 	      <div class="span6">
-	        <?php echo CHtml::label("Kotamadya/Kabupaten <span class='required'>*</span>", "kota_kab_id") ;?>
+	        <?php echo CHtml::ActivelabelEx($model, "kota_kab_id") ;?>
 	        <div id="kabkota_list">
 	          <span class="uneditable-input">Pilih Propinsi Terlebih dahulu</span>
 	        </div>	      
@@ -244,13 +244,13 @@
 	    </div>
 	    <div class="row">
 	      <div class="span6">
-	        <?php echo CHtml::label("Kecamatan <span class='required'>*</span>", "kecamatan_id") ;?>
+	        <?php echo CHtml::ActivelabelEx($model, "kecamatan_id") ;?>
 	        <div id="kecamatan_list">
 	          <span class="uneditable-input">Pilih Kotamadya/Kabupaten Terlebih dahulu</span>
 	        </div>	      	      	      
 	      </div>
 	      <div class="span6">
-	        <?php echo CHtml::label("Kelurahan <span class='required'>*</span>", "kelurahan_id") ;?>
+	        <?php echo CHtml::ActivelabelEx($model, "kelurahan_id") ;?>
 	        <div id="kelurahan_list">
 	          <span class="uneditable-input">Pilih Kecamatan Terlebih dahulu</span>
 	        </div>	      	      	      	      
@@ -258,13 +258,13 @@
 	    </div>
 	    <div class="row">
 	      <div class="span6">
-	        <?php echo CHtml::label("RW <span class='required'>*</span>", "rw_id") ;?>
+	        <?php echo CHtml::ActivelabelEx($model, "rw_id") ;?>
 	        <div id="rw_list">
 	          <span class="uneditable-input">Pilih Kelurahan Terlebih dahulu</span>
 	        </div>	      	      	      	      	      
 	      </div>
 	      <div class="span6">
-	        <?php echo CHtml::label("RT <span class='required'>*</span>", "rt_id") ;?>
+	        <?php echo CHtml::ActivelabelEx($model, "rt_id") ;?>
 	        <div id="rt_list">
 	          <span class="uneditable-input">Pilih RW Terlebih dahulu</span>
 	        </div>	      	      	      	      	      	      

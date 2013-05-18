@@ -108,37 +108,37 @@ class SiteController extends Controller
 	}
 	
 	public function actionRenderPropinsiList() {
-		$data = array('negara_id'=>Yii::app()->request->getQuery('negara_id'),'propinsi_id'=>'');
+		$data = array('negara_id'=>Yii::app()->request->getQuery('negara_id'),'propinsi_id'=>'','name'=>Yii::app()->request->getQuery('name'));
 		
 		return $this->renderPartial('_propinsi_list',$data,false,false);
 	}
 	
 	public function actionRenderKabupatenKotaList() {
-		$data = array('propinsi_id'=>Yii::app()->request->getQuery('propinsi_id'),'kabkota_id'=>'');
+		$data = array('propinsi_id'=>Yii::app()->request->getQuery('propinsi_id'),'kabkota_id'=>'','name'=>Yii::app()->request->getQuery('propinsi_id'));
 		
 		return $this->renderPartial('_kabkota_list',$data,false,false);		
 	}
 	
 	public function actionRenderKecamatanList() {
-		$data = array('kabkota_id'=>Yii::app()->request->getQuery('kabkota_id'),'kecamatan_id'=>'');
+		$data = array('kabkota_id'=>Yii::app()->request->getQuery('kabkota_id'),'kecamatan_id'=>'','name'=>Yii::app()->request->getQuery('name'));
 		
 		return $this->renderPartial('_kecamatan_list',$data,false,false);		
 	}
 	
 	public function actionRenderKelurahanList() {
-		$data = array('kecamatan_id'=>Yii::app()->request->getQuery('kecamatan_id'),'kelurahan_id'=>'');
+		$data = array('kecamatan_id'=>Yii::app()->request->getQuery('kecamatan_id'),'kelurahan_id'=>'','name'=>Yii::app()->request->getQuery('name'));
 		
 		return $this->renderPartial('_kelurahan_list',$data,false,false);		
 	}
 	
 	public function actionRenderRwList() {
-		$data = array('kelurahan_id'=>Yii::app()->request->getQuery('kelurahan_id'),'rw_id'=>'');
+		$data = array('kelurahan_id'=>Yii::app()->request->getQuery('kelurahan_id'),'rw_id'=>'','name'=>Yii::app()->request->getQuery('name'));
 		
 		return $this->renderPartial('_rw_list',$data,false,false);		
 	}
 	
 	public function actionRenderRtList() {
-		$data = array('rw_id'=>Yii::app()->request->getQuery('rw_id'),'rt_id'=>'');
+		$data = array('rw_id'=>Yii::app()->request->getQuery('rw_id'),'rt_id'=>'','name'=>Yii::app()->request->getQuery('name'));
 		
 		return $this->renderPartial('_rt_list',$data,false,false);		
 	}

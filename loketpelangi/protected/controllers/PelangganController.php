@@ -68,12 +68,6 @@ class PelangganController extends Controller
 
 		if(isset($_POST['Pelanggan']))
 		{   
-			$_POST['Pelanggan']['propinsi_id']    = $_POST['propinsi_id'] ; 
-			$_POST['Pelanggan']['kabkota_id']     = $_POST['kabkota_id'] ; 
-			$_POST['Pelanggan']['kecamatan_id']   = $_POST['kecamatan_id'] ; 
-			$_POST['Pelanggan']['kelurahan_id']   = $_POST['kelurahan_id'] ;
-			$_POST['Pelanggan']['rw_id']          = $_POST['rw_id'] ;
-			$_POST['Pelanggan']['rt_id']          = $_POST['rt_id'] ;
 			$_POST['Pelanggan']['kode_pelanggan'] = $_POST['Pelanggan']['kode_loket'].":".Pelanggan::model()->nextKodePelanggan();  
 
 			$data  = $_POST['Pelanggan'] ;			 

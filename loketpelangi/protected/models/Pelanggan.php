@@ -79,7 +79,7 @@ class Pelanggan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nama, kode_loket, kode_usaha, kode_pos, negara_id', 'required'),
+			array('nama, kode_loket, kode_usaha, kode_pos, negara_id, propinsi_id, kabkota_id, kecamatan_id, kelurahan_id, rw_id, rt_id', 'required'),
 			array('term, takakura_pinjaman, tong_sampah_pinjaman', 'numerical', 'integerOnly'=>true),
 			array('kode_pelanggan', 'length', 'max'=>100),
 			array('kode_salesman', 'length', 'max'=>18),
