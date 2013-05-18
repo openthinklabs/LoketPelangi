@@ -11,10 +11,11 @@
   <div class="span3">
   <?php 
 	  $this->widget('bootstrap.widgets.TbButton',array(
-	  		'label' => 'Produk',
-	  		'size' => 'large'
+	  		'label' => 'Produk ('. Produk::model()->count().')',
+	  		'size' => 'large',
+            'url'=>Yii::app()->createUrL('produk/index')
 	  ));  
-  ?>    
+  ?>  
   </div>
   <div class="span3">
   <?php 
