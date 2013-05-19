@@ -14,7 +14,7 @@ class PelangganController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
+				'accessControl', // perform access control for CRUD operations
 		);
 	}
 
@@ -26,21 +26,21 @@ class PelangganController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array(''),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
+				array('allow',  // allow all users to perform 'index' and 'view' actions
+						'actions'=>array(''),
+						'users'=>array('*'),
+				),
+				array('allow', // allow authenticated user to perform 'create' and 'update' actions
+						'actions'=>array('create','update','index','view','jsonp'),
+						'users'=>array('@'),
+				),
+				array('allow', // allow admin user to perform 'admin' and 'delete' actions
+						'actions'=>array('admin','delete'),
+						'users'=>array('admin'),
+				),
+				array('deny',  // deny all users
+						'users'=>array('*'),
+				),
 		);
 	}
 
@@ -51,7 +51,7 @@ class PelangganController extends Controller
 	public function actionView($id)
 	{
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+				'model'=>$this->loadModel($id),
 		));
 	}
 
@@ -67,17 +67,17 @@ class PelangganController extends Controller
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Pelanggan']))
-		{   
-			$_POST['Pelanggan']['kode_pelanggan'] = $_POST['Pelanggan']['kode_loket'].":".Pelanggan::model()->nextKodePelanggan();  
+		{
+			$_POST['Pelanggan']['kode_pelanggan'] = $_POST['Pelanggan']['kode_loket'].":".Pelanggan::model()->nextKodePelanggan();
 
-			$data  = $_POST['Pelanggan'] ;			 
+			$data  = $_POST['Pelanggan'] ;
 			$model->attributes=$data;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->kode_pelanggan));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+				'model'=>$model,
 		));
 	}
 
@@ -101,7 +101,7 @@ class PelangganController extends Controller
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+				'model'=>$model,
 		));
 	}
 
@@ -132,7 +132,7 @@ class PelangganController extends Controller
 	{
 		$dataProvider=new CActiveDataProvider('Pelanggan');
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+				'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -140,15 +140,37 @@ class PelangganController extends Controller
 	 * Manages all models.
 	 */
 	public function actionAdmin()
-	{ 
+	{
 		$model=new Pelanggan('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Pelanggan']))
 			$model->attributes=$_GET['Pelanggan'];
-		
+
 		$this->render('admin',array(
-			'model'=>$model,
+				'model'=>$model,
 		));
+	}
+
+	public function actionJsonp() {
+		$param = strtolower(Yii::app()->request->getQuery('q'));
+		$match = addcslashes(strtolower($param), '%_') ;
+
+		$q = new CDbCriteria( array(
+				'condition' => "LOWER(nama) LIKE :nama",
+				'params'    => array(':nama' => "%$param%")
+		) );
+
+		$pelanggans   = Pelanggan::model()->findAll( $q );
+		$results = array();
+
+		foreach($pelanggans as $p) {
+			$results[] = array(
+					'id' => $p->kode_pelanggan,
+					'text' => $p->nama
+			);
+		}
+		echo CJSON::encode($results);
+
 	}
 
 	/**

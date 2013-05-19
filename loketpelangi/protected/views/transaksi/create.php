@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
-	'Transaksis'=>array('index'),
-	'Create',
+	'Data Transaksi'=>array('index'),
+	'Transaksi Baru',
 );
 
 $this->menu=array(
@@ -10,6 +10,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Transaksi</h1>
+<h1>Transaksi Baru</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
