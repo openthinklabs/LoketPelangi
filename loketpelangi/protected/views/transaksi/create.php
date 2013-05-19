@@ -12,4 +12,8 @@ $this->menu=array(
 
 <h1>Transaksi Baru</h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<div class="row-fluid">
+  <div class="span12">
+    <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+  </div>
+</div>

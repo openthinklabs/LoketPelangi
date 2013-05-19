@@ -61,16 +61,23 @@ class TransaksiController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Transaksi;
+		$model        = new Transaksi;
+		$model_detail = new TransaksiDetail; 
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Transaksi']))
-		{
+		{   echo "<pre>" ;
+			print_r($_POST); 
+		    exit;
+			
 			$model->attributes=$_POST['Transaksi'];
-			if($model->save())
+			if($model->save()) {
+				
 				$this->redirect(array('view','id'=>$model->id));
+			}
+				
 		}
 
 		$this->render('create',array(

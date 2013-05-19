@@ -36,7 +36,7 @@ class Transaksi extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id', 'required'),
+			array('tanggal, kode_pelanggan', 'required'),
 			array('id', 'length', 'max'=>200),
 			array('kode_pelanggan', 'length', 'max'=>100),
 			array('tanggal', 'safe'),
