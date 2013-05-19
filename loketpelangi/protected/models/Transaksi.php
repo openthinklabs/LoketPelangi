@@ -88,4 +88,17 @@ class Transaksi extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function nextId() {
+		$result = Yii::app()->db->createCommand()
+		->select("MAX(SUBSTR(id,STRPOS(id,':')+1))::integer+1 AS next_id")
+		->from('transaksi')
+		->queryScalar();
+	
+		if($result == '') {
+			$result = 1;
+		}
+	
+		return $result ;
+	}	
 }

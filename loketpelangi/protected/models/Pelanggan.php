@@ -209,8 +209,6 @@ class Pelanggan extends CActiveRecord
 	}
 	
 	public function nextKodePelanggan() {
-		$sql = "SELECT  FROM pelanggan ;" ;
-		
 		$result = Yii::app()->db->createCommand()
 		           ->select("MAX(SUBSTR(kode_pelanggan,STRPOS(kode_pelanggan,':')+1))::integer+1 AS next_id_pelanggan")
 		           ->from('pelanggan')

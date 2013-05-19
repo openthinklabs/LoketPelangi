@@ -68,13 +68,14 @@ class TransaksiController extends Controller
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Transaksi']))
-		{   echo "<pre>" ;
-			print_r($_POST); 
-		    exit;
-			
+		{   //echo "<pre>" ;
+			//print_r($_POST); 
+		    //exit;
+		    
+			//$_POST['Transaksi']['id'] = $_POST['Pelanggan']['kode_loket'].":".Transaksi::model()->nextId();
+			$_POST['Transaksi']['id']   =  "kode_loket:".Transaksi::model()->nextId();
 			$model->attributes=$_POST['Transaksi'];
-			if($model->save()) {
-				
+			if($model->save()) {				
 				$this->redirect(array('view','id'=>$model->id));
 			}
 				

@@ -92,10 +92,10 @@
 		
 		    hitungTotal('') ;
 
-		    var kode_produk_html  = '<span class=\'uneditable-input kode_produk\' style=text-align:right>'+nama_produk+'</span><input type=hidden name=kode_produk['+kode_produk+'][] value='+kode_produk+'/>' ;
-		    var qty_html          = '<span class=\'uneditable-input qty\' style=text-align:right>'+qty+'</span><input type=hidden name=qty['+kode_produk+'][] value='+qty+'/>' ;
-		    var harga_html        = '<span class=\'uneditable-input harga\' style=text-align:right>'+harga+'</span><input type=hidden name=harga['+kode_produk+'][] value='+harga+'/>' ;
-		    var total_html        = '<span class=\'uneditable-input total\' style=text-align:right>'+total+'</span><input type=hidden name=total['+kode_produk+'][] value='+total+'/>' ;
+		    var kode_produk_html  = '<span class=\'uneditable-input kode_produk\' style=text-align:right>'+nama_produk+'</span><input type=hidden name=kode_produk_arr['+kode_produk+'][] value='+kode_produk+'></input>' ;
+		    var qty_html          = '<span class=\'uneditable-input qty\' style=text-align:right>'+qty+'</span><input type=hidden name=qty['+kode_produk+'][] value='+qty+'></input>' ;
+		    var harga_html        = '<span class=\'uneditable-input harga\' style=text-align:right>'+harga+'</span><input type=hidden name=harga_arr['+kode_produk+'][] value='+harga+'></input>' ;
+		    var total_html        = '<span class=\'uneditable-input total\' style=text-align:right>'+total+'</span><input type=hidden name=total_arr['+kode_produk+'][] value='+total+'></input>' ;
 		    var hapus_html        = '<button type=button name=hapus id='+kode_produk+' class=btn><i class=icon-remove></i></button>' ;
 				
 		    $('#tabel_transaksi_detail > tbody:last').append('<tr><td>'+kode_produk_html+'</td><td>'+qty_html+'</td><td>'+harga_html+'</td><td>'+total_html+'</td><td>'+hapus_html+'</td></tr>');
