@@ -102,9 +102,9 @@
     <div class="span3">
 		  <?php 
 			  $this->widget('bootstrap.widgets.TbButton',array(
-			  		'label' => 'Pengguna ('. User::model()->count().')',
+			  		'label' => 'Pengguna ('. Users::model()->count().')',
 			  		'size' => 'large',
-		            'url'=>Yii::app()->createUrL('user/index')
+		            'url'=>Yii::app()->createUrL('users/index')
 			  ));  
 		  ?>        
     </div>

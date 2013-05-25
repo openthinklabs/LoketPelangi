@@ -117,7 +117,7 @@ class AuthAssignmentsController extends RbamController {
 	public function actionAssign($uid) {
 		Yii::import('rbam.extensions.alphapager.ApPagination');
 		Yii::import('rbam.extensions.alphapager.ApArrayDataProvider');
-
+           
 		$user = $this->_getUser($uid);
 		$authAssignment = new AuthAssignment('assign'); // $authAssignment is a CFormModel
 		$form = $authAssignment->getForm();

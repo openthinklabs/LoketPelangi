@@ -145,7 +145,7 @@ Yii::app()->getClientScript()->registerScript('assign',
 		var jThis = jQuery(this);
 		var strRole = jThis.val();
 		jQuery("#AuthAssignment_itemName").val(strRole);
-		jQuery("#AuthAssignment_userId").val('.$user->id.');
+		jQuery("#AuthAssignment_userId").val("'.$user->id.'");
 		jQuery("#AuthAssignment_userName").val("'.$user->rbamName.'");
 		// save the checkbox in the dialog then open the form
 		jQuery("#rbam-dialog-form").data("element",jThis).dialog("open");
