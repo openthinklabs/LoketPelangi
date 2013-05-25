@@ -414,7 +414,7 @@ class RbamModule extends CWebModule {
 	*/
 	public function getUser($id) {
 		$user = CActiveRecord::model($this->userClass)->findByPk($id);
-
+		
 		if (is_null($user) && !Yii::app()->getUser()->isGuest) {
 			$user = CActiveRecord::model($this->userClass);
 			$user->{$this->userNameAttribute} = Yii::app()->getUser()->id;

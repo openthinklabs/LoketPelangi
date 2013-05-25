@@ -1,8 +1,9 @@
 <?php
-$this->breadcrumbs=array(
-	'Users'=>array('index'),
-	$model->id,
-);
+$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+		'links'=>array('Dashboard'=>Yii::app()->createUrl('dashboard/index'),
+				'Pengguna'=>array('index'),
+				$model->id),
+));
 
 $this->menu=array(
 	array('label'=>'List Users','url'=>array('index')),
@@ -23,5 +24,6 @@ $this->menu=array(
 		'email',
 		'nama_lengkap',
 		'password',
+		'kode_loket',
 	),
 )); ?>

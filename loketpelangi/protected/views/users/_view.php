@@ -20,5 +20,9 @@
 	<?php echo CHtml::encode($data->password); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('kode_loket')); ?>:</b>
+	<?php echo CHtml::encode($data->kode_loket); ?>
+	<br />
+
 
 </div>

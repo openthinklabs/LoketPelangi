@@ -11,6 +11,8 @@
 
 	<?php echo $form->textFieldRow($model,'nama_lengkap',array('class'=>'span5','maxlength'=>200)); ?>
 
+	<?php echo $form->textFieldRow($model,'kode_loket',array('class'=>'span5','maxlength'=>50)); ?>
+
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType' => 'submit',

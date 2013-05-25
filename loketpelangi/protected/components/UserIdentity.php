@@ -8,6 +8,8 @@
 class UserIdentity extends CUserIdentity
 {
 	/**
+	 * @TODO : Belum ada enkripsi password 
+	 * 
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
 	 * are both 'demo'.
@@ -17,14 +19,11 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$users=array(
-			// username => password
-			'sri.rahayu'=>'alhamdulillah',
-			'wildan.m'=>'ihaveadream',
-		);
-		if(!isset($users[$this->username]))
+		$user = Users::model()->findByAttributes(array("username"=>$this->username));
+		
+		if($user===null)
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($users[$this->username]!==$this->password)
+		elseif($user->password!==$this->password) 
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else
 			$this->errorCode=self::ERROR_NONE;

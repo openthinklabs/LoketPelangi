@@ -1,8 +1,10 @@
 <?php
-$this->breadcrumbs=array(
-	'Users'=>array('index'),
-	'Create',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+		'links'=>
+		array('Dashboard'=>Yii::app()->createUrl('dashboard/index'),
+				'Pengguna'=>array('index'),
+				'Tambah'),
+));
 
 $this->menu=array(
 	array('label'=>'List Users','url'=>array('index')),
@@ -10,6 +12,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Users</h1>
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<fieldset> 
+  <legend>Tambah User Baru</legend>
+  <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+</fieldset>

@@ -9,6 +9,10 @@
  * @property string $email
  * @property string $nama_lengkap
  * @property string $password
+ * @property string $kode_loket
+ *
+ * The followings are the available model relations:
+ * @property Loket $kodeLoket
  */
 class Users extends CActiveRecord
 {
@@ -38,13 +42,13 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id', 'required'),
-			array('id, username', 'length', 'max'=>50),
+			array('id, username, nama_lengkap, kode_loket, email', 'required'),
+			array('id, username, kode_loket', 'length', 'max'=>50),
 			array('email', 'length', 'max'=>100),
 			array('nama_lengkap, password', 'length', 'max'=>200),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, email, nama_lengkap, password', 'safe', 'on'=>'search'),
+			array('id, username, email, nama_lengkap, password, kode_loket', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,6 +60,7 @@ class Users extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'kodeLoket' => array(self::BELONGS_TO, 'Loket', 'kode_loket'),
 		);
 	}
 
@@ -70,6 +75,7 @@ class Users extends CActiveRecord
 			'email' => 'Email',
 			'nama_lengkap' => 'Nama Lengkap',
 			'password' => 'Password',
+			'kode_loket' => 'Kode Loket',
 		);
 	}
 
@@ -89,9 +95,23 @@ class Users extends CActiveRecord
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('nama_lengkap',$this->nama_lengkap,true);
 		$criteria->compare('password',$this->password,true);
+		$criteria->compare('kode_loket',$this->kode_loket,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function nextId() {
+		$result = Yii::app()->db->createCommand()
+		->select("MAX(SUBSTR(id,STRPOS(id,':')+1))::integer+1 AS next_userid")
+		->from('users')
+		->queryScalar();
+	
+		if($result == '') {
+			$result = 1;
+		}
+	
+		return $result ;
+	}	
 }

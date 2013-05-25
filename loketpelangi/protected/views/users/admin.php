@@ -1,8 +1,9 @@
 <?php
-$this->breadcrumbs=array(
-	'Users'=>array('index'),
-	'Manage',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+		'links'=>array('Dashboard'=>Yii::app()->createUrl('dashboard/index'),
+				'Pengguna'=>array('index'),
+				'Manage'),
+));
 
 $this->menu=array(
 	array('label'=>'List Users','url'=>array('index')),
@@ -47,6 +48,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'email',
 		'nama_lengkap',
 		'password',
+		'kode_loket',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),

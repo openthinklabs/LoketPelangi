@@ -1,7 +1,8 @@
 <?php
-$this->breadcrumbs=array(
-	'Users',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+		'links'=>array('Dashboard'=>Yii::app()->createUrl('dashboard/index'),
+				'Pengguna'),
+));
 
 $this->menu=array(
 	array('label'=>'Create Users','url'=>array('create')),
@@ -9,7 +10,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Users</h1>
+<h1>Pengguna</h1>
 
 <?php $this->widget('bootstrap.widgets.TbListView',array(
 	'dataProvider'=>$dataProvider,
