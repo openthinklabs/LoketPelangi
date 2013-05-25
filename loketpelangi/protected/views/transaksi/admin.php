@@ -1,8 +1,10 @@
 <?php
-$this->breadcrumbs=array(
-	'Transaksis'=>array('index'),
-	'Manage',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+		'links'=>array('Dashboard'=>Yii::app()->createUrl('dashboard/index'),
+				'Transaksi'=>array('index'),
+				'Manage'),
+));
+
 
 $this->menu=array(
 	array('label'=>'List Transaksi','url'=>array('index')),

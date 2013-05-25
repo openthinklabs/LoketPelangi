@@ -59,17 +59,14 @@ class TransaksiController extends Controller
 	{
 		$model        = new Transaksi;
 		$model_detail = new TransaksiDetail; 
-
+         
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Transaksi']))
-		{   //echo "<pre>" ;
-			//print_r($_POST); 
-		    //exit;
-		    
-			//$_POST['Transaksi']['id'] = $_POST['Pelanggan']['kode_loket'].":".Transaksi::model()->nextId();
-			$_POST['Transaksi']['id']   =  "kode_loket:".Transaksi::model()->nextId();
+		{   
+			$user = Users::model()->findByAttributes(array("username"=>Yii::app()->user->id));		    
+			$_POST['Transaksi']['id']   =  $user->kode_loket.":".Transaksi::model()->nextId();
 			$model->attributes=$_POST['Transaksi'];
 			if($model->save()) {				
 				$this->redirect(array('view','id'=>$model->id));
