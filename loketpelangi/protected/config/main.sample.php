@@ -31,6 +31,37 @@ return array(
 						'bootstrap.gii'
 			),
 		),
+			
+		'rbam'=>array(
+				  'applicationLayout'=>'application.views.layouts.main',
+				  'authAssignmentsManagerRole'=>' Auth Assignments Manager',
+				  'authenticatedRole'=>'Authenticated',
+				  'authItemsManagerRole'=>'Auth Items Manager',
+				  'baseScriptUrl'=>null,
+				  'baseUrl'=>null,
+				  'cssFile'=>null,
+				  'development'=>true,
+				  'exclude'=>'rbam',
+				  'guestRole'=>'Guest',
+				  'initialise'=>null,
+				  'layout'=>'rbam.views.layouts.main',
+				  'juiCssFile'=>'jquery-ui.css',
+				  'juiHide'=>'puff',
+				  'juiScriptFile'=>'jquery-ui.min.js',
+				  'juiScriptUrl'=>null,
+				  'juiShow'=>'fade',
+				  'juiTheme'=>'base',
+				  'juiThemeUrl'=>null,
+				  'pageSize'=>10,
+				  'rbacManagerRole'=>'RBAC Manager',
+				  'relationshipsPageSize'=>5,
+				  'showConfirmation'=>3000,
+				  'showMenu'=>true,
+				  'userClass'=>'Users',
+				  'userCriteria'=>array(),
+				  'userIdAttribute'=>'id',
+                  'userNameAttribute'=>'username',
+				),
 		
 	),
 
@@ -38,7 +69,7 @@ return array(
 	'components'=>array(
 		'user'=>array(
 			// enable cookie-based authentication
-			'allowAutoLogin'=>true
+			'allowAutoLogin'=>false
 		),
 		'bootstrap' => array(
 			'class' => 'ext.bootstrap.components.Bootstrap',
@@ -61,7 +92,7 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'psql:host=localhost;dbname=loketpelangi',
+			'connectionString' => 'pgsql:host=localhost;dbname=loketpelangi',
 			'emulatePrepare' => true,
 			'username' => 'loketpelangi',
 			'password' => 'ihsantaqwa',
@@ -87,6 +118,13 @@ return array(
 				*/
 			),
 		),
+	   'authManager'=>array(
+	       'class'=>'CDbAuthManager',
+	       'connectionID'=>'db',		
+	       'itemTable'=>'auth_item',
+	       'itemChildTable'=>'auth_item_child',
+	       'assignmentTable'=>'auth_assignment',
+		 )
 	),
 
 	// application-level parameters that can be accessed

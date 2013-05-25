@@ -93,3 +93,29 @@
   </div>      
 </div>
 </fieldset>
+
+<hr/>
+
+<fieldset>
+  <legend>Manajemen Pengguna &amp; Autorisasi</legend>
+  <div class="row-fluid">
+    <div class="span3">
+		  <?php 
+			  $this->widget('bootstrap.widgets.TbButton',array(
+			  		'label' => 'Pengguna ('. User::model()->count().')',
+			  		'size' => 'large',
+		            'url'=>Yii::app()->createUrL('user/index')
+			  ));  
+		  ?>        
+    </div>
+    <div class="span3">
+		  <?php 
+			  $this->widget('bootstrap.widgets.TbButton',array(
+			  		'label' => 'RBAM',
+			  		'size' => 'large',
+		            'url'=>Yii::app()->createUrL('rbam')
+			  ));  
+		  ?>        
+    </div>    
+  </div>
+</fieldset>
