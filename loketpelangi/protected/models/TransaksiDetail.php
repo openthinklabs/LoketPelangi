@@ -100,4 +100,37 @@ class TransaksiDetail extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function doSaveOrUpdate($data=array()) {
+		$transaksi_detail = self::model()->findByAttributes(array("transaksi_id"=>$data['transaksi_id'],"kode_produk"=>$data['kode_produk'])) ;
+		
+		if($transaksi_detail) {
+			$transaksi_detail->qty   = $data['qty'];
+			$transaksi_detail->harga = $data['harga'];
+			$result = $transaksi_detail->save();  
+		} else {			  
+			$transaksi_detail               = new TransaksiDetail;
+			$transaksi_detail->id           = $data['kode_loket'].":".self::model()->nextId();
+			$transaksi_detail->transaksi_id = $data['transaksi_id']; 
+			$transaksi_detail->kode_produk  = $data['kode_produk'];
+			$transaksi_detail->qty          = $data['qty'];
+			$transaksi_detail->harga        = $data['harga'];
+			$result = $transaksi_detail->save(); 
+		}
+		
+		return $result ;
+	}
+	
+	public function nextId() {
+		$result = Yii::app()->db->createCommand()
+		->select("MAX(SUBSTR(id,STRPOS(id,':')+1))::integer+1 AS next_id")
+		->from('transaksi_detail')
+		->queryScalar();
+	
+		if($result == '') {
+			$result = 1;
+		}
+	
+		return $result ;
+	}	
 }

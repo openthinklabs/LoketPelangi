@@ -5,10 +5,10 @@ $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
 ));
 
 $this->menu=array(
-	array('label'=>'List Transaksi','url'=>array('index')),
-	array('label'=>'Create Transaksi','url'=>array('create')),
+	array('label'=>'Daftar Transaksi','url'=>array('index')),
+	array('label'=>'Tambah Transaksi','url'=>array('create')),
 	array('label'=>'Update Transaksi','url'=>array('update','id'=>$model->id)),
-	array('label'=>'Delete Transaksi','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Hapus Transaksi','url'=>'#','linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Transaksi','url'=>array('admin')),
 );
 ?>

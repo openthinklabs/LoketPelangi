@@ -7,6 +7,11 @@
  * @property string $id
  * @property string $tanggal
  * @property string $kode_pelanggan
+ * @property string $nama_anonim
+ *
+ * The followings are the available model relations:
+ * @property Pelanggan $kodePelanggan
+ * @property TransaksiDetail[] $transaksiDetails 
  */
 class Transaksi extends CActiveRecord
 {
@@ -37,12 +42,12 @@ class Transaksi extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('tanggal, kode_pelanggan', 'required'),
-			array('id', 'length', 'max'=>200),
+			array('id, nama_anonim', 'length', 'max'=>200),
 			array('kode_pelanggan', 'length', 'max'=>100),
 			array('tanggal', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, tanggal, kode_pelanggan', 'safe', 'on'=>'search'),
+			array('id, tanggal, kode_pelanggan, nama_anonim', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,6 +59,8 @@ class Transaksi extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+				'kodePelanggan' => array(self::BELONGS_TO, 'Pelanggan', 'kode_pelanggan'),
+				'transaksiDetails' => array(self::HAS_MANY, 'TransaksiDetail', 'transaksi_id'),				
 		);
 	}
 
@@ -66,6 +73,7 @@ class Transaksi extends CActiveRecord
 			'id' => 'ID',
 			'tanggal' => 'Tanggal',
 			'kode_pelanggan' => 'Kode Pelanggan',
+			'nama_anonim' => 'Nama Anonim',
 		);
 	}
 
@@ -83,6 +91,7 @@ class Transaksi extends CActiveRecord
 		$criteria->compare('id',$this->id,true);
 		$criteria->compare('tanggal',$this->tanggal,true);
 		$criteria->compare('kode_pelanggan',$this->kode_pelanggan,true);
+		$criteria->compare('nama_anonim',$this->nama_anonim,true);		
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

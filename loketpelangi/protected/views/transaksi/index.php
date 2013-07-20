@@ -5,8 +5,9 @@ $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
 ));
 
 $this->menu=array(
-	array('label'=>'Create Transaksi','url'=>array('create')),
-	array('label'=>'Manage Transaksi','url'=>array('admin')),
+	array('label'=>'Tambah Transaksi','url'=>array('create')),
+	array('label'=>'Tambah Transaksi Anonim','url'=>array('createAnonim')),
+	array('label'=>'Manajemen Transaksi','url'=>array('admin')),
 );
 ?>
 

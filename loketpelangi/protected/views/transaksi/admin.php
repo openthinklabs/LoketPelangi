@@ -7,8 +7,9 @@ $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
 
 
 $this->menu=array(
-	array('label'=>'List Transaksi','url'=>array('index')),
-	array('label'=>'Create Transaksi','url'=>array('create')),
+	array('label'=>'Daftar Transaksi','url'=>array('index')),
+	array('label'=>'Tambah Transaksi','url'=>array('create')),
+	array('label'=>'Tambah Transaksi Anonim','url'=>array('createAnonim')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -25,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Transaksis</h1>
+<h1>Manajemen Transaksi</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -45,6 +46,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
+        'nama_anonim',
 		'tanggal',
 		'kode_pelanggan',
 		array(

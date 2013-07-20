@@ -29,7 +29,7 @@ class TransaksiController extends Controller
 				array('allow',
 						'actions'=>array(
 								'View','Create','Update',
-								'Delete','Index','Admin'
+								'Delete','Index','Admin','CreateAnonim'
 						),
 						'roles'=>array('Operator','Administrator'),
 				),
@@ -77,6 +77,46 @@ class TransaksiController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 		));
+	}
+	
+	public function actionCreateAnonim() {
+		$model           = new Transaksi;
+		$model_detail    = new TransaksiDetail;
+		$pelanggan       = Pelanggan::model()->findByPk(Yii::app()->params['pelangganAnonim']) ;
+		$kode_produk_arr = Yii::app()->request->getPost("kode_produk_arr");
+		$qty_arr         = Yii::app()->request->getPost("qty_arr");
+		$harga_arr       = Yii::app()->request->getPost("harga_arr");
+		$total_arr       = Yii::app()->request->getPost("total_arr"); 
+		  
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		if(isset($_POST['Transaksi']))
+		{
+			$_POST['Transaksi']['kode_pelanggan'] = $_POST['Pelanggan']['kode_pelanggan'] ; 
+			$user = Users::model()->findByAttributes(array("username"=>Yii::app()->user->id));
+			$_POST['Transaksi']['id']   =  $user->kode_loket.":".Transaksi::model()->nextId();
+			$model->attributes=$_POST['Transaksi'];
+			if($model->save()) {
+				foreach($kode_produk_arr as $kode_produk=>$the_data) {
+					$qty   = $qty_arr[$kode_produk][0] ;
+					$harga = $harga_arr[$kode_produk][0] ;
+						
+					TransaksiDetail::model()->doSaveOrUpdate(array("transaksi_id"=>$model->id,
+					                                               "kode_produk"=>$kode_produk, 
+					                                               "qty"=>$qty,
+					                                               "harga"=>$harga,
+					                                               "kode_loket"=>$user->kode_loket)) ;
+				}				
+				$this->redirect(array('view','id'=>$model->id));
+			}
+		
+		}
+		
+		$this->render('createAnonim',array(
+				'model'=>$model,
+				'pelanggan'=>$pelanggan
+		));		
 	}
 
 	/**
