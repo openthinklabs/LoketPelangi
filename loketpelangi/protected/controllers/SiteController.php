@@ -114,7 +114,7 @@ class SiteController extends Controller
 	}
 	
 	public function actionRenderKabupatenKotaList() {
-		$data = array('propinsi_id'=>Yii::app()->request->getQuery('propinsi_id'),'kabkota_id'=>'','name'=>Yii::app()->request->getQuery('propinsi_id'));
+		$data = array('propinsi_id'=>Yii::app()->request->getQuery('propinsi_id'),'kabkota_id'=>'','name'=>Yii::app()->request->getQuery('name'));
 		
 		return $this->renderPartial('_kabkota_list',$data,false,false);		
 	}

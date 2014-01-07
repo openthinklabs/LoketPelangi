@@ -29,7 +29,7 @@ class TransaksiController extends Controller
 				array('allow',
 						'actions'=>array(
 								'View','Create','Update',
-								'Delete','Index','Admin','CreateAnonim'
+								'Delete','Index','Admin','CreateAnonim','CetakFaktur'
 						),
 						'roles'=>array('Operator','Administrator'),
 				),
@@ -57,18 +57,30 @@ class TransaksiController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model        = new Transaksi;
-		$model_detail = new TransaksiDetail; 
+		$model            = new Transaksi;
+		$model_detail     = new TransaksiDetail;
+		$kode_produk_arr  = Yii::app()->request->getPost("kode_produk_arr"); 
+		$qty_arr          = Yii::app()->request->getPost("qty_arr"); 
+		$harga_arr        = Yii::app()->request->getPost("harga_arr");
+		$total_arr        = Yii::app()->request->getPost("total_arr");
          
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
-
 		if(isset($_POST['Transaksi']))
 		{   
 			$user = Users::model()->findByAttributes(array("username"=>Yii::app()->user->id));		    
 			$_POST['Transaksi']['id']   =  $user->kode_loket.":".Transaksi::model()->nextId();
 			$model->attributes=$_POST['Transaksi'];
-			if($model->save()) {				
+			if($model->save()) {
+				foreach($kode_produk_arr as $kode_produk=>$the_data_arr) {
+					$data_transaksi_detail = array("id"=>$user->kode_loket.":".Transaksi::model()->nextId(),
+					                               "transaksi_id"=>$_POST['Transaksi']['id'],
+					                               "kode_produk"=>$kode_produk,
+							                       "qty"=>$qty_arr[$kode_produk][0],
+					                               "harga"=>$harga_arr[$kode_produk][0]);
+					$model_detail->attributes = $data_transaksi_detail;
+					$model_detail->save();
+				} 
 				$this->redirect(array('view','id'=>$model->id));
 			}
 				
@@ -172,6 +184,13 @@ class TransaksiController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+	}
+	
+	/**
+	 * Mencetak Faktur
+	 */
+	public function actionCetakFaktur() {
+		die("W");
 	}
 
 	/**

@@ -13,13 +13,46 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Transaksi #<?php echo $model->id; ?></h1>
+<h1>Informasi Transaksi <small><?php echo $model->id; ?></small></h1>
 
-<?php $this->widget('bootstrap.widgets.TbDetailView',array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'tanggal',
-		'kode_pelanggan',
-	),
-)); ?>
+<fieldset>
+  <legend><?php echo $model->kodePelanggan->nama?>, <?php echo $model->tanggal ;?></legend>
+	<table class="table table-bordered table-striped table-condensed">
+	  <caption>Transaksi Detail</caption>
+	  <thead>
+	    <tr>
+	      <th>Produk</th>
+	      <th>Jumlah</th>
+	      <th>Harga</th>
+	      <th>Total</th> 
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <?php foreach($model->transaksiDetails as $transaksiDetail){?>
+	    <?php $line_total = $transaksiDetail->qty*$transaksiDetail->harga ;?> 
+	    <tr>
+	      <td><?php echo $transaksiDetail->kodeProduk->nama ;?></td>
+	      <td style="text-align:center"><?php echo $transaksiDetail->qty ;?></td>
+	      <td style="text-align:right"><?php echo $transaksiDetail->harga ?></td>
+	      <td style="text-align:right"><?php echo $line_total ;?></td>
+	    </tr> 
+	    <?php } ?>
+	  </tbody>
+	</table>
+	
+	<div class="form-actions">
+	  <div class="pull-right">
+	    <div class="pull-right">
+	      <button type="button" name="cetak_faktur" id="cetak_faktur" class="btn"><i class="icon-print"></i> Cetak Faktur</button>
+	    </div>
+	  </div>
+	</div>
+</fieldset>
+
+<script type="text/javascript">
+ jQuery(function() {
+	 $("#cetak_faktur").unbind("click").bind("click", function(){
+		 window.open('<?php echo Yii::app()->createUrl('Transaksi/cetakFaktur');?>','_blank','height=500,width=1200,toolbar=no,location=no');
+	 });	 
+ }) ;
+</script>

@@ -93,7 +93,7 @@
 		    hitungTotal('') ;
 
 		    var kode_produk_html  = '<span class=\'uneditable-input kode_produk\' style=text-align:right>'+nama_produk+'</span><input type=hidden name=kode_produk_arr['+kode_produk+'][] value='+kode_produk+'></input>' ;
-		    var qty_html          = '<span class=\'uneditable-input qty\' style=text-align:right>'+qty+'</span><input type=hidden name=qty['+kode_produk+'][] value='+qty+'></input>' ;
+		    var qty_html          = '<span class=\'uneditable-input qty\' style=text-align:right>'+qty+'</span><input type=hidden name=qty_arr['+kode_produk+'][] value='+qty+'></input>' ;
 		    var harga_html        = '<span class=\'uneditable-input harga\' style=text-align:right>'+harga+'</span><input type=hidden name=harga_arr['+kode_produk+'][] value='+harga+'></input>' ;
 		    var total_html        = '<span class=\'uneditable-input total\' style=text-align:right>'+total+'</span><input type=hidden name=total_arr['+kode_produk+'][] value='+total+'></input>' ;
 		    var hapus_html        = '<button type=button name=hapus id='+kode_produk+' class=btn><i class=icon-remove></i></button>' ;

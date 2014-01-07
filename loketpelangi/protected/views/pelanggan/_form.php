@@ -13,7 +13,7 @@
   		  		
   	    $('body').on('change','#Pelanggan_propinsi_id',function(){ 
   		  	var propinsi_id = $(this).select2('val');
-  		    $.get('".Yii::app()->createUrl('site/renderKabupatenKotaList')."',{propinsi_id:propinsi_id,name:'Pelanggan[propinsi_id]'},function(data){
+  		    $.get('".Yii::app()->createUrl('site/renderKabupatenKotaList')."',{propinsi_id:propinsi_id,name:'Pelanggan[kabkota_id]'},function(data){
   		  		$('#kabkota_list').html(data);
   		  		$('#Pelanggan_kabkota_id').select2({ 
   		  		  placeholder: 'Pilih Kabupaten/Kota',    
@@ -24,7 +24,7 @@
   		    		
   	    $('body').on('change','#Pelanggan_kabkota_id',function(){ 
   		  	var kabkota_id = $(this).select2('val');
-  		    $.get('".Yii::app()->createUrl('site/renderKecamatanList')."',{kabkota_id:kabkota_id,name:'Pelanggan[kabkota_id]'},function(data){
+  		    $.get('".Yii::app()->createUrl('site/renderKecamatanList')."',{kabkota_id:kabkota_id,name:'Pelanggan[kecamatan_id]'},function(data){
   		  		$('#kecamatan_list').html(data);
   		  		$('#Pelanggan_kecamatan_id').select2({ 
   		  		  placeholder: 'Pilih Kecamatan',    
@@ -35,7 +35,7 @@
   		    		
   	    $('body').on('change','#Pelanggan_kecamatan_id',function(){ 
   		  	var kecamatan_id = $(this).select2('val');
-  		    $.get('".Yii::app()->createUrl('site/renderKelurahanList')."',{kecamatan_id:kecamatan_id,name:'Pelanggan[kecamatan_id]'},function(data){
+  		    $.get('".Yii::app()->createUrl('site/renderKelurahanList')."',{kecamatan_id:kecamatan_id,name:'Pelanggan[kelurahan_id]'},function(data){
   		  		$('#kelurahan_list').html(data);
   		  		$('#Pelanggan_kelurahan_id').select2({ 
   		  		  placeholder: 'Pilih Kelurahan',    
@@ -46,7 +46,7 @@
   		    		
   	    $('body').on('change','#Pelanggan_kelurahan_id',function(){ 
   		  	var kelurahan_id = $(this).select2('val');
-  		    $.get('".Yii::app()->createUrl('site/renderRwList')."',{kelurahan_id:kelurahan_id,name:'Pelanggan[kelurahan_id]'},function(data){
+  		    $.get('".Yii::app()->createUrl('site/renderRwList')."',{kelurahan_id:kelurahan_id,name:'Pelanggan[rw_id]'},function(data){
   		  		$('#rw_list').html(data);
   		  		$('#Pelanggan_rw_id').select2({ 
   		  		  placeholder: 'Pilih RW',    
@@ -57,7 +57,7 @@
   		    		
   	    $('body').on('change','#Pelanggan_rw_id',function(){ 
   		  	var rw_id = $(this).select2('val');
-  		    $.get('".Yii::app()->createUrl('site/renderRtList')."',{rw_id:rw_id,name:'Pelanggan[rw_id]'},function(data){
+  		    $.get('".Yii::app()->createUrl('site/renderRtList')."',{rw_id:rw_id,name:'Pelanggan[rt_id]'},function(data){
   		  		$('#rt_list').html(data);
   		  		$('#Pelanggan_rt_id').select2({ 
   		  		  placeholder: 'Pilih RT',    
