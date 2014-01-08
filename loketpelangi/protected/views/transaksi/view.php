@@ -52,7 +52,7 @@ $this->menu=array(
 <script type="text/javascript">
  jQuery(function() {
 	 $("#cetak_faktur").unbind("click").bind("click", function(){
-		 window.open('<?php echo Yii::app()->createUrl('Transaksi/cetakFaktur');?>','_blank','height=500,width=1200,toolbar=no,location=no');
+		 window.open('<?php echo Yii::app()->createUrl('Transaksi/cetakFaktur',array('id'=>$model->id));?>','_blank','height=500,width=1200,toolbar=no,location=no');
 	 });	 
  }) ;
 </script>

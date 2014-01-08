@@ -145,7 +145,7 @@ class Pdfable extends CBehavior
     public function getPdfOptions()
     {
         if(!isset($this->_options['bin']))
-            $this->_options['bin'] = '/usr/bin/wkhtmltopdf';
+            $this->_options['bin'] = '/usr/bin/wkhtmltopdf-i386';
 
         if(!is_executable($this->_options['bin']))
             throw new CException('Could not execute '.$this->_options['bin']);
