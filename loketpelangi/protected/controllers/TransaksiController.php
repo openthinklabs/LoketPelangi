@@ -252,7 +252,7 @@ class TransaksiController extends Controller {
 		$pdf->AddPage ("L",$page_format,false,false);
 		
 		$pdf->SetFont ( "times", "BI", 18 );
-		$pdf->Cell ( 120, 10, "Loket Pelangi", 0, 1, 'L' );
+		$pdf->Cell ( 120, 10, $model->kodeDivisi?$model->kodeDivisi->keterangan:"Loket Pelangi", 0, 1, 'L' );
 		$pdf->SetFont ( "times", "", 10 );
 		$pdf->MultiCell ( 120, 10, "Jln. Gandaria 4 RT. 12 RW. 02 \nKelurahan Pekayon, Kecamatan Pasar Rebo \nJakarta Timur 13710 \nTelp. 087884599249", 0, 'L',false,0);
 		$pdf->Cell ( 0, 10, "Kepada Yth", 0, 1, 'L' );
