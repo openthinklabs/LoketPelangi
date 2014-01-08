@@ -10,6 +10,22 @@
 	<?php echo $form->textFieldRow($model,'nama',array('class'=>'span5','maxlength'=>200)); ?>
 
 	<?php echo $form->textFieldRow($model,'keterangan',array('class'=>'span5','maxlength'=>255)); ?>
+	
+    <?php echo CHtml::activeLabelEx($model,'kode_divisi');?>
+	<?php 
+	$this->widget('bootstrap.widgets.TbSelect2', array(
+			'asDropDownList' => true,
+			'name' => 'Produk[kode_divisi]',
+			'data'=>CHtml::listData(Divisi::model()->findAll(), 'kode_divisi', 'keterangan'),
+			'options'=>array(
+					'placeholder' => 'Pilih Divisi',
+			),
+			'htmlOptions'=>array(
+					'prompt'=>'',
+					'options'=>array($model->kode_divisi=>array('selected'=>true))
+			)
+	));
+	?>		
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

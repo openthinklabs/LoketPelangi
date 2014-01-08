@@ -14,7 +14,26 @@
 	<?php echo $form->hiddenField($model,'id',array('class'=>'span5','maxlength'=>200)); ?>
 
 	<?php echo $form->datePickerRow($model,'tanggal',array('class'=>'span2')); ?>
-
+	
+	
+	
+	<?php if(true){?>
+    <?php echo CHtml::activeLabelEx($model,'kode_pelanggan');?>
+	<?php 
+	$this->widget('bootstrap.widgets.TbSelect2', array(
+			'asDropDownList' => true,
+			'name' => 'Transaksi[kode_pelanggan]',
+			'data'=>CHtml::listData(Pelanggan::model()->findAll(), 'kode_pelanggan', 'nama'),
+			'options'=>array(
+					'placeholder' => 'Pilih Pelanggan',
+			),
+			'htmlOptions'=>array(
+					'prompt'=>'',
+					'options'=>array($model->kode_pelanggan=>array('selected'=>true))
+			)
+	));
+	?>			
+    <?php } else {?> 
 	<?php echo CHtml::activeLabelEx($model, 'kode_pelanggan')?>
 	<?php 
 	$this->widget('bootstrap.widgets.TbSelect2', array(
@@ -42,6 +61,23 @@
     		),
 	)));	
 	?>
+	<?php }?>
+	
+    <?php echo CHtml::activeLabelEx($model,'kode_divisi');?>
+	<?php 
+	$this->widget('bootstrap.widgets.TbSelect2', array(
+			'asDropDownList' => true,
+			'name' => 'Transaksi[kode_divisi]',
+			'data'=>CHtml::listData(Divisi::model()->findAll(), 'kode_divisi', 'keterangan'),
+			'options'=>array(
+					'placeholder' => 'Pilih Divisi',
+			),
+			'htmlOptions'=>array(
+					'prompt'=>'',
+					'options'=>array($model->kode_divisi=>array('selected'=>true))
+			)
+	));
+	?>		
 	
 	<div class="row-fluid">
 	  <div class="span12">

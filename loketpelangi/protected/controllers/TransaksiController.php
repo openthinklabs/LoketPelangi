@@ -212,10 +212,7 @@ class TransaksiController extends Controller {
 	/**
 	 * Mencetak Faktur
 	 */
-	public function actionCetakFaktur($id) {
-		setlocale(LC_ALL, 'id_ID.UTF-8');
-		Yii::app()->setLanguage('id_id');
-		
+	public function actionCetakFaktur($id) {		
 		$margin_left          = 0 ; //18mm
 		$margin_top           = 0 ; //37 mm
 		$margin_right         = 0 ; //18 mm

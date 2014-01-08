@@ -9,6 +9,29 @@
 	  </tr>
 	</thead>
 	<tbody>
+	<?php foreach($model->transaksiDetails as $transaksi_detail){?> 
+	<tr> 
+	  <td>
+	    <span class='uneditable-input kode_produk' style=text-align:right><?php echo $transaksi_detail->kodeProduk->nama;?></span>
+	    <input type="hidden" name="kode_produk_arr[<?php echo $transaksi_detail->kode_produk;?>][]" value="<?php echo $transaksi_detail->kode_produk;?>"></input>
+	  </td>
+	  <td>
+	    <span class="uneditable-input qty" style="text-align:right"><?php echo $transaksi_detail->qty;?></span>
+	     <input type="hidden" name="qty_arr[<?php echo $transaksi_detail->kode_produk;?>][]" value="<?php echo $transaksi_detail->qty;?>"></input>
+	  </td>
+	  <td>
+	    <span class="uneditable-input harga" style="text-align:right"><?php echo $transaksi_detail->harga;?></span>
+	    <input type="hidden" name="harga_arr[<?php echo $transaksi_detail->kode_produk;?>][]" value=''><?php echo $transaksi_detail->harga;?></input>
+	  </td>
+	  <td>
+	    <span class="uneditable-input total" style="text-align:right"><?php echo $transaksi_detail->harga*$transaksi_detail->qty;?></span>
+	    <input type="hidden" name="total_arr[<?php echo $transaksi_detail->kode_produk;?>][]" value='<?php echo $transaksi_detail->harga*$transaksi_detail->qty;?>'></input>
+	  </td>
+	  <td>
+	    <button type="button" name="hapus" id='<?php echo $transaksi_detail->kode_produk;?>' class=btn><i class=icon-remove></i></button>
+	  </td>
+	</tr>
+	<?php }?>
 	</tbody>
 	<tfoot>
 	  <tr>

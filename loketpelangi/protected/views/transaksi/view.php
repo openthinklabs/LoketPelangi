@@ -33,8 +33,8 @@ $this->menu=array(
 	    <tr>
 	      <td><?php echo $transaksiDetail->kodeProduk->nama ;?></td>
 	      <td style="text-align:center"><?php echo $transaksiDetail->qty ;?></td>
-	      <td style="text-align:right"><?php echo $transaksiDetail->harga ?></td>
-	      <td style="text-align:right"><?php echo $line_total ;?></td>
+	      <td style="text-align:right"><?php echo Yii::app()->numberFormatter->formatCurrency($transaksiDetail->harga,'IDR') ?></td>
+	      <td style="text-align:right"><?php echo Yii::app()->numberFormatter->formatCurrency($line_total,'IDR') ;?></td>
 	    </tr> 
 	    <?php } ?>
 	  </tbody>

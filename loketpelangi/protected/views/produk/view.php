@@ -23,5 +23,6 @@ $this->menu=array(
 		'kode_produk',
 		'nama',
 		'keterangan',
+        array('name'=>'Divisi','type'=>'text','value'=>$model->kodeDivisi?$model->kodeDivisi->keterangan:'-'),
 	),
 )); ?>

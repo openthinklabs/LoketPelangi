@@ -55,6 +55,15 @@
   <div class="span3">
   <?php 
 	  $this->widget('bootstrap.widgets.TbButton',array(
+	  		'label' => 'Divisi ('. Divisi::model()->count().')',
+	  		'size' => 'large',
+            'url'=>Yii::app()->createUrL('divisi/index')
+	  ));  
+  ?>    
+  </div>  
+  <div class="span3">
+  <?php 
+	  $this->widget('bootstrap.widgets.TbButton',array(
 	  		'label' => 'Bidang usaha ('. BidangUsaha::model()->count().')',
 	  		'size' => 'large',
             'url'=>Yii::app()->createUrL('bidangUsaha/index')
@@ -70,6 +79,9 @@
 	  ));  
   ?>    
   </div>    
+</div>
+<br>
+<div class="row-fluid">
   <div class="span3">
   <?php 
 	  $this->widget('bootstrap.widgets.TbButton',array(
@@ -79,9 +91,6 @@
 	  ));  
   ?>    
   </div>      
-</div>
-<br>
-<div class="row-fluid">
   <div class="span3">
   <?php 
 	  $this->widget('bootstrap.widgets.TbButton',array(

@@ -8,9 +8,11 @@
  * @property string $tanggal
  * @property string $kode_pelanggan
  * @property string $nama_anonim
+ * @property string $kode_divisi
  *
  * The followings are the available model relations:
  * @property Pelanggan $kodePelanggan
+ * @property Divisi $kodeDivisi
  * @property TransaksiDetail[] $transaksiDetails 
  */
 class Transaksi extends CActiveRecord
@@ -41,13 +43,14 @@ class Transaksi extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tanggal, kode_pelanggan', 'required'),
+			array('id, tanggal, kode_pelanggan, kode_divisi', 'required'),
 			array('id, nama_anonim', 'length', 'max'=>200),
 			array('kode_pelanggan', 'length', 'max'=>100),
+		    array('kode_divisi', 'length', 'max'=>12),
 			array('tanggal', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, tanggal, kode_pelanggan, nama_anonim', 'safe', 'on'=>'search'),
+			array('id, tanggal, kode_pelanggan, nama_anonim, kode_divisi', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,6 +63,7 @@ class Transaksi extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 				'kodePelanggan' => array(self::BELONGS_TO, 'Pelanggan', 'kode_pelanggan'),
+				'kodeDivisi' => array(self::BELONGS_TO, 'Divisi', 'kode_divisi'),
 				'transaksiDetails' => array(self::HAS_MANY, 'TransaksiDetail', 'transaksi_id'),				
 		);
 	}
@@ -74,6 +78,7 @@ class Transaksi extends CActiveRecord
 			'tanggal' => 'Tanggal',
 			'kode_pelanggan' => 'Kode Pelanggan',
 			'nama_anonim' => 'Nama Anonim',
+			'kode_divisi' => 'Kode Divisi',
 		);
 	}
 
@@ -92,6 +97,7 @@ class Transaksi extends CActiveRecord
 		$criteria->compare('tanggal',$this->tanggal,true);
 		$criteria->compare('kode_pelanggan',$this->kode_pelanggan,true);
 		$criteria->compare('nama_anonim',$this->nama_anonim,true);		
+		$criteria->compare('kode_divisi',$this->kode_divisi,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
