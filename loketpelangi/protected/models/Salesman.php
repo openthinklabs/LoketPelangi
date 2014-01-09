@@ -14,6 +14,8 @@
  * The followings are the available model relations:
  * @property Pelanggan[] $pelanggans
  * @property Loket $kodeLoket
+ * 
+ * @author Wildan Maulana, OpenThink Labs
  */
 class Salesman extends CActiveRecord
 {

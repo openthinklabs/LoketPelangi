@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * 
  * This is the model class for table "divisi".
  *
  * The followings are the available columns in table 'divisi':
@@ -11,6 +12,8 @@
  *
  * The followings are the available model relations:
  * @property Produk[] $produks
+ * 
+ * @author Wildan Maulana, OpenThink Labs
  */
 class Divisi extends CActiveRecord
 {

@@ -50,6 +50,8 @@
  * @property Lokasi $rt
  * @property Loket $kodeLoket
  * @property Kelompok[] $kelompoks
+ * 
+ * @author Wildan Maulana, OpenThink Labs
  */
 class Pelanggan extends CActiveRecord
 {

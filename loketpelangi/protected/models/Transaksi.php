@@ -13,7 +13,9 @@
  * The followings are the available model relations:
  * @property Pelanggan $kodePelanggan
  * @property Divisi $kodeDivisi
- * @property TransaksiDetail[] $transaksiDetails 
+ * @property TransaksiDetail[] $transaksiDetails
+ * 
+ *  @author Wildan Maulana, OpenThink Labs
  */
 class Transaksi extends CActiveRecord
 {

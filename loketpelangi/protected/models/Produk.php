@@ -12,6 +12,8 @@
  * The followings are the available model relations:
  * @property Divisi $kodeDivisi
  * @property TransaksiDetail[] $transaksiDetails
+ * 
+ * @author Wildan Maulana, OpenThink Labs
  */
 class Produk extends CActiveRecord
 {

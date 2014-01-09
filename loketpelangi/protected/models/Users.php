@@ -13,6 +13,8 @@
  *
  * The followings are the available model relations:
  * @property Loket $kodeLoket
+ * 
+ * @author Wildan Maulana, OpenThink Labs
  */
 class Users extends CActiveRecord
 {

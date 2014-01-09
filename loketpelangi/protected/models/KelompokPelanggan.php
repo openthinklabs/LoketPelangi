@@ -1,11 +1,12 @@
 <?php
-
 /**
  * This is the model class for table "kelompok_pelanggan".
  *
  * The followings are the available columns in table 'kelompok_pelanggan':
  * @property string $kode_pelanggan
  * @property integer $kelompok_id
+ * 
+ * @author Wildan Maulana, OpenThink Labs
  */
 class KelompokPelanggan extends CActiveRecord
 {

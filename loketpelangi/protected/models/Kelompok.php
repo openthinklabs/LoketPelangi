@@ -1,6 +1,8 @@
 <?php
 
 /**
+ * @author Wildan Maulana, OpenThink Labs
+ * 
  * This is the model class for table "kelompok".
  *
  * The followings are the available columns in table 'kelompok':
@@ -10,6 +12,8 @@
  *
  * The followings are the available model relations:
  * @property Pelanggan[] $pelanggans
+ * 
+ * @author Wildan Maulana, OpenThink Labs
  */
 class Kelompok extends CActiveRecord
 {

@@ -29,6 +29,8 @@
  * @property Lokasi $propinsi
  * @property Salesman[] $salesmen
  * @property Pelanggan[] $pelanggans
+ * 
+ * @author Wildan Maulana, OpenThink Labs
  */
 class Loket extends CActiveRecord
 {
