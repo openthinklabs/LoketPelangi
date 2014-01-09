@@ -213,9 +213,9 @@ class TransaksiController extends Controller {
 	 * Mencetak Faktur
 	 */
 	public function actionCetakFaktur($id) {		
-		$margin_left          = 0 ; //18mm
-		$margin_top           = 0 ; //37 mm
-		$margin_right         = 0 ; //18 mm
+		$margin_left          = 5 ; //18mm
+		$margin_top           = 2 ; //37 mm
+		$margin_right         = 5 ; //18 mm
 		$width                = "220" ;
 		$height               = "120" ;
 		$orientation          = ($height>$width) ? 'P' : 'L';
@@ -228,6 +228,7 @@ class TransaksiController extends Controller {
 		$pdf->SetTitle ( "Faktur Penjualan" );
 		$pdf->SetSubject ( "Faktur Penjualan" );
 		$pdf->SetKeywords ( "POS Loket Pelangi" );
+		$pdf->SetMargins($margin_left, $margin_top, $margin_right);
 		$pdf->setPrintHeader ( false );
 		$pdf->setPrintFooter ( false );
 		
@@ -257,18 +258,27 @@ class TransaksiController extends Controller {
 		$pdf->MultiCell ( 120, 10, "Jln. Gandaria 4 RT. 12 RW. 02 \nKelurahan Pekayon, Kecamatan Pasar Rebo \nJakarta Timur 13710 \nTelp. 087884599249", 0, 'L',false,0);
 		$pdf->Cell ( 0, 10, "Kepada Yth", 0, 1, 'L' );
 		$pdf->Cell ( 120, 10, "", 0, 0, 'L' );
-		$pdf->MultiCell ( 0, 10, "SIT Nurul Fikri\nAlamat ", 0, 'L',false,1);		
+		$alamat  = $model->kodePelanggan->jalan."\n" ;
+		$alamat .= $model->kodePelanggan->kelurahan->nama ;
+		$alamat .= ",".$model->kodePelanggan->kecamatan->nama."\n" ;
+		$alamat .= $model->kodePelanggan->kabkota->nama." " ;
+		if($model->kodePelanggan->kode_pos != "") {
+		  $alamat .= $model->kodePelanggan->kode_pos ;
+		}
+		$pdf->MultiCell ( 0, 10, $model->kodePelanggan->nama."\n".$alamat, 0, 'L',false,1);		
 		
 		$pdf->SetFont ( "times", "B", 14 );
 		$pdf->Cell ( 0, 10, "Faktur", 0, 1, 'C' );
 		
 		$pdf->SetFont ( "times", "", 9 );
 		
+		$width_no = "10mm" ;
 		$html = '<table cellpadding=0 cellspacing=0 border=0>
 				 <thead>
 				   <tr>
-				     <th style="text-align:center;border-top:1px solid #000000;border-bottom:1px solid #000000">No</th>
+				     <th style="text-align:center;border-top:1px solid #000000;border-bottom:1px solid #000000;width:'.$width_no.'">No</th>
 				     <th style="text-align:center;border-top:1px solid #000000;border-bottom:1px solid #000000">Nama Produk</th>
+				     		<th style="text-align:center;border-top:1px solid #000000;border-bottom:1px solid #000000">Tanggal</th>
 				     <th style="text-align:center;border-top:1px solid #000000;border-bottom:1px solid #000000">Kwantitas</th>
 				     <th style="text-align:center;border-top:1px solid #000000;border-bottom:1px solid #000000">Harga Satuan <br/> (Rp)</th>
 				     <th style="text-align:center;border-top:1px solid #000000;border-bottom:1px solid #000000">Total <br/> (Rp)</th>
@@ -279,13 +289,16 @@ class TransaksiController extends Controller {
 		$no        = 1 ;
 		$total_qty = 0 ; 
 		$total     = 0 ;
+		$tanggal   = DateTime::createFromFormat('Y-m-d',$model->tanggal);
+		$tanggal   = $tanggal->format('d-m-Y');
 	    foreach($model->transaksiDetails as $transaksiDetail){
 	    $line_total  = $transaksiDetail->qty*$transaksiDetail->harga ; 
 	    $total_qty  += $transaksiDetail->qty ;
 	    $total      += $line_total ;
 	    $html .= '<tr>
-	    		    <td>'.$no.'</td>
+	    		    <td style="width:'.$width_no.'">'.$no.'</td>
 	                <td>'.$transaksiDetail->kodeProduk->nama.'</td>
+	                <td>'.$tanggal.'</td>
 	                <td style="text-align:center;">'.$transaksiDetail->qty.'</td>
 	                <td style="text-align:right">'.$transaksiDetail->harga.'</td>
 	                <td style="text-align:right">'.Yii::app()->numberFormatter->formatCurrency($line_total,'IDR').'</td>
@@ -296,7 +309,7 @@ class TransaksiController extends Controller {
 	    $html .= '</tbody>
 	    		  <tfoot>
 	    		   <tr>
-	    		    <td colspan="2" style="text-align:center;border-top:1px solid #000000;border-bottom:1px solid #000000"><strong>Total</strong></td>
+	    		    <td colspan="3" style="text-align:center;border-top:1px solid #000000;border-bottom:1px solid #000000"><strong>Total</strong></td>
 	    		    <td style="text-align:center;border-top:1px solid #000000;border-bottom:1px solid #000000">'.$total_qty.'</td>	    		
 	    		    <td style="text-align:right;border-top:1px solid #000000;border-bottom:1px solid #000000">&nbsp;</td>
 	    		    <td style="text-align:right;border-top:1px solid #000000;border-bottom:1px solid #000000">'.Yii::app()->numberFormatter->formatCurrency($total,'IDR').'</td>
@@ -309,11 +322,11 @@ class TransaksiController extends Controller {
 	    $pdf->Cell ( 130, 10, "Diterima Oleh", 0, 0, 'L' );
 	    $pdf->Cell ( 40, 10, "Hormat Kami", 0, 1, 'L' );
 
-		
 	    $pdf->Ln(8);
 	    
-	    $pdf->MultiCell ( 130, 10, "Barang/jasa telah diterima dengan baik\n".$model->kodePelanggan->nama, 0, 'L',false,0);
-	    $pdf->Cell ( 40, 10, "", 'B', 1, 'L' );
+	    $pdf->MultiCell ( 60, 10, "Barang/jasa telah diterima dengan baik\n".$model->kodePelanggan->nama, 'T', 'L',false,0);
+	    $pdf->Cell ( 70, 10, "", '', 0, 'L' );
+	    $pdf->MultiCell ( 40, 10, "", 'T', 'L',false,0);
 	    
 		
 		$pdf->Output ( "loket_pelangi.pdf", "I" );
